@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edmilson Valente · AI & Web Developer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="gradient-bg"></div>
+  <div class="overlay"></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">E.V.Dev</div>
+      <nav class="desktop-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="mobile-menu-btn" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-content">
+      <h1 class="hero-title">Hi, I'm <span class="highlight">Edmilson Fabio Valente</span></h1>
+      <p class="hero-subtitle">Informatics Engineering student · Web developer · ML/AI enthusiast</p>
+      
+      <div class="social-links">
+        <a href="https://github.com/Ediko-eng" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="mailto:edmilsonfabiovalente@gmail.com" class="social-link"><i class="far fa-envelope"></i></a>
+        <a href="https://linkedin.com" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/share/1C5Vf6E44g/?mibextid=wwXIfr" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/invites/contact/?igsh=pwoztob2i0l7&utm_content=ok4ruiu" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+      </div>
+
+      <div class="cta-buttons">
+        <a href="#projects" class="btn btn-primary">View my work</a>
+        <a href="#contact" class="btn btn-secondary">Let's talk</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-image">
+          <img src="Image.png" alt="Edmilson Fabio Valente">
+          <div class="univ-badge">
+            <i class="fas fa-university"></i>
+            <span>UNTL · Informatics Engineering</span>
+          </div>
+        </div>
+        <div class="about-text">
+          <p>Hello! I'm Edmilson Fabio Valente, a dedicated student at UNTL's Faculty of Engineering, Science, and Technology, majoring in Informatics Engineering. I'm a developer driven by a passion for building intelligent, elegant solutions that solve real-world problems.</p>
+          <p>Currently, I specialize in Web Development and am deeply immersed in Machine Learning and Deep Learning. I believe the future lies at the intersection of beautiful interfaces and powerful data-driven insights. My primary tool is Python, and I constantly push boundaries.</p>
+          <p>I'm on a focused journey to master AI while refining my software engineering craft. Coding isn't just about writing scripts—it's the continuous pursuit of knowledge and delivering high-quality, innovative results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-code"></i></div>
+          <h3>Frontend</h3>
+          <p>HTML, CSS, JavaScript, React</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-server"></i></div>
+          <h3>Backend</h3>
+          <p>PHP, Python, Django, Node.js</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-database"></i></div>
+          <h3>Database</h3>
+          <p>PostgreSQL, MySQL, MongoDB</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-brain"></i></div>
+          <h3>ML/DL</h3>
+          <p>TensorFlow, PyTorch, scikit-learn</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS (with real GitHub links) -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <!-- Tetum Morphology Detection -->
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-language"></i></div>
+          <h3>Tetum Morphology Detection</h3>
+          <p>A tool to detect and analyze Tetum language morphology – built as part of my research at UNTL.</p>
+          <a href="https://github.com/Ediko-eng/Edmilson-Fabio-Valente.git" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+        <!-- Quiz Game "How to be a Millionaire" -->
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-gamepad"></i></div>
+          <h3>Quiz: How to be a Millionaire</h3>
+          <p>Desktop quiz game built with PyQt6 – test your knowledge in this "Who Wants to Be a Millionaire?" style game.</p>
+          <a href="https://github.com/Ediko-eng/Quiz-How-to-be-a-Millionare.git" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+        <!-- HIV/AIDS Data Analysis -->
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-chart-bar"></i></div>
+          <h3>HIV/AIDS Data Analysis</h3>
+          <p>Analysis of HIV/AIDS quantitative indicators in Timor-Leste, segmented by sex – using Python and data science libraries.</p>
+          <a href="https://github.com/Ediko-eng/Data-Scince.git" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+        <!-- Sign Language Classification (KNN) -->
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-hand-paper"></i></div>
+          <h3>Sign Language Classification</h3>
+          <p>Machine learning model using K‑Nearest Neighbors to classify hand signs for sign language recognition.</p>
+          <a href="https://github.com/Ediko-eng/SIGNLANGUAGE-CLASSIFICATION.git" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get in touch</h2>
+      <div class="contact-grid">
+        <a href="mailto:edmilsonfabiovalente@gmail.com" class="contact-card">
+          <div class="contact-icon"><i class="far fa-envelope"></i></div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">edmilsonfabiovalente<br>@gmail.com</div>
+        </a>
+        <a href="https://www.facebook.com/share/1C5Vf6E44g/?mibextid=wwXIfr" target="_blank" class="contact-card">
+          <div class="contact-icon"><i class="fab fa-facebook"></i></div>
+          <div class="contact-label">Facebook</div>
+          <div class="contact-value">@edmilson.fabio</div>
+        </a>
+        <a href="https://www.instagram.com/invites/contact/?igsh=pwoztob2i0l7&utm_content=ok4ruiu" target="_blank" class="contact-card">
+          <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+          <div class="contact-label">Instagram</div>
+          <div class="contact-value">@edmilson.dev</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-social">
+      <a href="https://github.com/Ediko-eng" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/share/1C5Vf6E44g/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/invites/contact/?igsh=pwoztob2i0l7&utm_content=ok4ruiu" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>Made with <span class="heart"><i class="fas fa-heart"></i></span> by Edmilson Fabio Valente · 2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
