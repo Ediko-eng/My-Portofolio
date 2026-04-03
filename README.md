@@ -44,4 +44,4 @@ Feel free to reach out for collaborations or inquiries:
 ---
 **Author:** Edmilson Fabio Valente  
 **Focus:** AI & Web Developer  
-**License:** [MIT License](https://github.com/Ediko-eng/SIGNLANGUAGE-CLASSIFICATION/blob/main/LICENSE)
+**License:** [MIT License](https://github.com/Ediko-eng/My-Portofolio/blob/main/LICENSE.md)
