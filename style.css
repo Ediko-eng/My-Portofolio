@@ -1,3 +1,37 @@
+:root {
+  --bg-primary: #050510;
+  --bg-secondary: #0f172a;
+  --bg-card: rgba(20, 25, 45, 0.6);
+  --bg-card-strong: rgba(12, 18, 30, 0.84);
+  --bg-section: rgba(0, 0, 0, 0.3);
+  --bg-header: rgba(5, 8, 20, 0.7);
+  --bg-button: rgba(255, 255, 255, 0.05);
+  --text-primary: #ffffff;
+  --text-secondary: #d0dcff;
+  --text-muted: #b0c0ff;
+  --border: rgba(255, 255, 255, 0.1);
+  --accent: #00ffff;
+  --accent-2: #ff71ce;
+  --shadow: rgba(0, 255, 255, 0.25);
+}
+
+body[data-theme="light"] {
+  --bg-primary: #eef4ff;
+  --bg-secondary: #dde8ff;
+  --bg-card: rgba(255, 255, 255, 0.75);
+  --bg-card-strong: rgba(255, 255, 255, 0.92);
+  --bg-section: rgba(255, 255, 255, 0.25);
+  --bg-header: rgba(255, 255, 255, 0.72);
+  --bg-button: rgba(15, 23, 42, 0.05);
+  --text-primary: #0f172a;
+  --text-secondary: #1f2a44;
+  --text-muted: #475569;
+  --border: rgba(15, 23, 42, 0.12);
+  --accent: #0ea5e9;
+  --accent-2: #db2777;
+  --shadow: rgba(14, 165, 233, 0.25);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,10 +40,11 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #050510;
-  color: #ffffff;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* ===== CUSTOM SCROLLBAR ===== */
@@ -31,6 +66,10 @@ body {
   background: linear-gradient(125deg, #0f0f23 0%, #1a1a2e 30%, #16213e 60%, #0f3460 100%);
   background-size: 400% 400%;
   animation: gradientFlow 15s ease infinite;
+}
+
+body[data-theme="light"] #gradient-bg {
+  background: linear-gradient(125deg, #e7eefc 0%, #edf3ff 30%, #dfe9ff 60%, #cfe1ff 100%);
 }
 
 @keyframes gradientFlow {
@@ -58,8 +97,8 @@ header {
   z-index: 1000;
   padding: 1.2rem 2rem;
   backdrop-filter: blur(12px);
-  background: rgba(5, 8, 20, 0.7);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border);
 }
 
 .nav-container {
@@ -68,6 +107,13 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .logo {
@@ -85,7 +131,7 @@ header {
 }
 
 .desktop-nav a {
-  color: #e0e0ff;
+  color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
   font-size: 1.1rem;
@@ -95,36 +141,50 @@ header {
 }
 
 .desktop-nav a:hover {
-  color: #00ffff;
-  border-bottom-color: #00ffff;
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
+.theme-toggle,
 .mobile-menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-button);
+  color: var(--text-primary);
+  font-size: 1.2rem;
   cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.theme-toggle:hover,
+.mobile-menu-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--shadow);
 }
 
 .mobile-menu {
   display: none;
   flex-direction: column;
-  background: rgba(10, 15, 30, 0.95);
+  background: var(--bg-card-strong);
   backdrop-filter: blur(16px);
   border-radius: 1rem;
   padding: 1rem;
   margin-top: 1rem;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--border);
 }
 
 .mobile-menu a {
-  color: white;
+  color: var(--text-primary);
   text-decoration: none;
   padding: 1rem;
   font-size: 1.2rem;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid var(--border);
 }
 
 .mobile-menu a:last-child { border: none; }
@@ -162,7 +222,7 @@ header {
 
 .hero-subtitle {
   font-size: 1.5rem;
-  color: #cbd5ff;
+  color: var(--text-secondary);
   max-width: 700px;
   margin: 0 auto 2.5rem;
 }
@@ -177,22 +237,22 @@ header {
 .social-link {
   width: 60px;
   height: 60px;
-  background: rgba(255,255,255,0.05);
+  background: var(--bg-button);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--text-primary);
   font-size: 2rem;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--border);
   transition: 0.3s;
   text-decoration: none;
 }
 
 .social-link:hover {
   transform: translateY(-8px);
-  border-color: #00ffff;
-  box-shadow: 0 0 30px #00ffff;
+  border-color: var(--accent);
+  box-shadow: 0 0 30px var(--shadow);
   background: rgba(0,255,255,0.1);
 }
 
@@ -268,7 +328,7 @@ section {
 
 /* ===== ABOUT ===== */
 #about {
-  background: rgba(0,0,0,0.3);
+  background: var(--bg-section);
   backdrop-filter: blur(2px);
 }
 
@@ -316,7 +376,7 @@ section {
 .about-text p {
   font-size: 1.2rem;
   margin-bottom: 1.8rem;
-  color: #d0dcff;
+  color: var(--text-secondary);
 }
 
 /* ===== SKILLS ===== */
@@ -327,9 +387,9 @@ section {
 }
 
 .skill-card {
-  background: rgba(20, 25, 45, 0.6);
+  background: var(--bg-card);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--border);
   border-radius: 2rem;
   padding: 2rem 1.5rem;
   text-align: center;
@@ -361,7 +421,7 @@ section {
 }
 
 .skill-card p {
-  color: #b0c0ff;
+  color: var(--text-muted);
 }
 
 /* ===== PROJECTS ===== */
@@ -373,9 +433,9 @@ section {
 }
 
 .project-card {
-  background: rgba(20, 25, 45, 0.6);
+  background: var(--bg-card);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--border);
   border-radius: 2rem;
   padding: 2.5rem 2rem;
   text-align: center;
@@ -418,15 +478,15 @@ section {
 }
 
 .contact-card {
-  background: rgba(20, 25, 45, 0.6);
+  background: var(--bg-card);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--border);
   border-radius: 2rem;
   padding: 2rem;
   text-align: center;
   transition: 0.3s;
   text-decoration: none;
-  color: white;
+  color: var(--text-primary);
 }
 
 .contact-card:hover {
@@ -442,7 +502,7 @@ section {
 
 .contact-label {
   font-size: 1.2rem;
-  color: #a0b0ff;
+  color: var(--text-muted);
   margin-bottom: 0.5rem;
 }
 
@@ -456,8 +516,8 @@ section {
 footer {
   padding: 3rem 2rem;
   text-align: center;
-  background: rgba(0,0,0,0.3);
-  border-top: 1px solid rgba(255,255,255,0.05);
+  background: var(--bg-section);
+  border-top: 1px solid var(--border);
 }
 
 .footer-social {
@@ -468,7 +528,7 @@ footer {
 }
 
 .footer-social a {
-  color: white;
+  color: var(--text-primary);
   font-size: 1.8rem;
   transition: 0.2s;
 }

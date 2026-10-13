@@ -1,6 +1,28 @@
-// Mobile menu toggle
+const body = document.body;
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
+
+const applyTheme = (theme) => {
+  const selectedTheme = theme === 'light' ? 'light' : 'dark';
+  body.setAttribute('data-theme', selectedTheme);
+  if (themeIcon) {
+    themeIcon.classList.toggle('fa-moon', selectedTheme === 'dark');
+    themeIcon.classList.toggle('fa-sun', selectedTheme === 'light');
+  }
+  localStorage.setItem('portfolio-theme', selectedTheme);
+};
+
+const currentTheme = localStorage.getItem('portfolio-theme');
+applyTheme(currentTheme || 'dark');
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const nextTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    applyTheme(nextTheme);
+  });
+}
 
 if (menuToggle && mobileMenu) {
   menuToggle.addEventListener('click', () => {
@@ -15,13 +37,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
       target.scrollIntoView({ behavior: 'smooth' });
-      // Close mobile menu if open
       if (mobileMenu) mobileMenu.classList.remove('show');
     }
   });
 });
 
-// Close mobile menu on window resize (if opened and screen becomes large)
 window.addEventListener('resize', () => {
   if (window.innerWidth > 968 && mobileMenu) {
     mobileMenu.classList.remove('show');
