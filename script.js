@@ -4,6 +4,15 @@ const mobileMenu = document.getElementById('mobileMenu');
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
 
+const readSavedTheme = () => {
+  try {
+    return localStorage.getItem('portfolio-theme');
+  } catch (error) {
+    console.warn('Could not read the saved theme preference.', error);
+    return null;
+  }
+};
+
 const applyTheme = (theme) => {
   const selectedTheme = theme === 'light' ? 'light' : 'dark';
   body.setAttribute('data-theme', selectedTheme);
@@ -11,10 +20,18 @@ const applyTheme = (theme) => {
     themeIcon.classList.toggle('fa-moon', selectedTheme === 'dark');
     themeIcon.classList.toggle('fa-sun', selectedTheme === 'light');
   }
-  localStorage.setItem('portfolio-theme', selectedTheme);
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-label', `Switch to ${selectedTheme === 'dark' ? 'light' : 'dark'} mode`);
+    themeToggle.setAttribute('aria-pressed', String(selectedTheme === 'light'));
+  }
+  try {
+    localStorage.setItem('portfolio-theme', selectedTheme);
+  } catch (error) {
+    console.warn('Could not save the theme preference.', error);
+  }
 };
 
-const currentTheme = localStorage.getItem('portfolio-theme');
+const currentTheme = readSavedTheme();
 applyTheme(currentTheme || 'dark');
 
 if (themeToggle) {
