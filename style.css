@@ -49,7 +49,7 @@ body {
 
 /* ===== CUSTOM SCROLLBAR ===== */
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #1a1a2e; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
 ::-webkit-scrollbar-thumb { 
   background: linear-gradient(180deg, #00ffff, #a855f7);
   border-radius: 10px;
@@ -119,7 +119,7 @@ header {
 .logo {
   font-size: 2rem;
   font-weight: 800;
-  background: linear-gradient(145deg, #00ffff, #ff71ce);
+  background: linear-gradient(145deg, var(--accent), var(--accent-2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -147,7 +147,6 @@ header {
 
 .theme-toggle,
 .mobile-menu-btn {
-  display: flex;
   align-items: center;
   justify-content: center;
   width: 44px;
@@ -159,6 +158,14 @@ header {
   font-size: 1.2rem;
   cursor: pointer;
   transition: 0.3s ease;
+}
+
+.theme-toggle {
+  display: flex;
+}
+
+.mobile-menu-btn {
+  display: none;
 }
 
 .theme-toggle:hover,
@@ -213,7 +220,7 @@ header {
 }
 
 .hero-title .highlight {
-  background: linear-gradient(145deg, #00ffff, #ff71ce, #a975ff);
+  background: linear-gradient(145deg, var(--accent), var(--accent-2), #a975ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -286,13 +293,13 @@ header {
 
 .btn-secondary {
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.3);
-  color: white;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
 }
 
 .btn-secondary:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: #ff71ce;
+  background: var(--bg-button);
+  border-color: var(--accent-2);
 }
 
 /* ===== SECTIONS ===== */
@@ -310,7 +317,7 @@ section {
   font-weight: 700;
   text-align: center;
   margin-bottom: 4rem;
-  background: linear-gradient(135deg, #fff, #a0c0ff);
+  background: linear-gradient(135deg, var(--text-primary), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -321,7 +328,7 @@ section {
   display: block;
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, #00ffff, #ff71ce);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
   margin: 1rem auto 0;
   border-radius: 4px;
 }
@@ -354,7 +361,7 @@ section {
 
 .about-image:hover img {
   border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
-  border-color: #00ffff;
+  border-color: var(--accent);
 }
 
 .univ-badge {
@@ -364,12 +371,12 @@ section {
   background: rgba(0,255,255,0.1);
   padding: 0.8rem 1.5rem;
   border-radius: 50px;
-  border: 1px solid #00ffff40;
+  border: 1px solid var(--accent);
   margin-top: 2rem;
 }
 
 .univ-badge i {
-  color: #00ffff;
+  color: var(--accent);
   font-size: 1.8rem;
 }
 
@@ -398,8 +405,8 @@ section {
 
 .skill-card:hover {
   transform: translateY(-10px);
-  border-color: #00ffff;
-  box-shadow: 0 0 40px #00ffff30;
+  border-color: var(--accent);
+  box-shadow: 0 0 40px var(--shadow);
 }
 
 .skill-icon {
@@ -412,7 +419,7 @@ section {
   justify-content: center;
   font-size: 2.5rem;
   margin: 0 auto 1.5rem;
-  color: #00ffff;
+  color: var(--accent);
 }
 
 .skill-card h3 {
@@ -443,13 +450,13 @@ section {
 }
 
 .project-card:hover {
-  border-color: #ff71ce;
+  border-color: var(--accent-2);
   transform: scale(1.02);
 }
 
 .project-icon {
   font-size: 3rem;
-  color: #00ffff;
+  color: var(--accent);
   margin-bottom: 1.5rem;
 }
 
@@ -463,7 +470,7 @@ section {
   background: rgba(0,255,255,0.2);
   padding: 0.5rem 1.5rem;
   border-radius: 50px;
-  color: #00ffff;
+  color: var(--accent);
   font-weight: 600;
   margin-top: 1.5rem;
 }
@@ -490,13 +497,13 @@ section {
 }
 
 .contact-card:hover {
-  border-color: #00ffff;
+  border-color: var(--accent);
   transform: translateY(-5px);
 }
 
 .contact-icon {
   font-size: 2.5rem;
-  color: #00ffff;
+  color: var(--accent);
   margin-bottom: 1rem;
 }
 
@@ -534,11 +541,11 @@ footer {
 }
 
 .footer-social a:hover {
-  color: #00ffff;
+  color: var(--accent);
 }
 
 .heart {
-  color: #ff71ce;
+  color: var(--accent-2);
   display: inline-block;
 }
 
@@ -546,7 +553,7 @@ footer {
 @media (max-width: 968px) {
   .hero-title { font-size: 3.5rem; }
   .desktop-nav { display: none; }
-  .mobile-menu-btn { display: block; }
+  .mobile-menu-btn { display: flex; }
   .about-content { grid-template-columns: 1fr; text-align: center; }
   .about-image { display: flex; flex-direction: column; align-items: center; }
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
@@ -565,19 +572,19 @@ footer {
   margin-top: 1.5rem;
   padding: 0.7rem 1.5rem;
   background: rgba(0, 255, 255, 0.1);
-  border: 1px solid #00ffff40;
+  border: 1px solid var(--accent);
   border-radius: 50px;
-  color: #00ffff;
+  color: var(--accent);
   text-decoration: none;
   font-weight: 500;
   transition: 0.3s;
 }
 
 .project-link:hover {
-  background: #00ffff20;
-  border-color: #00ffff;
+  background: rgba(0, 255, 255, 0.18);
+  border-color: var(--accent);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px #00ffff30;
+  box-shadow: 0 5px 15px var(--shadow);
 }
 
 .project-link i {
