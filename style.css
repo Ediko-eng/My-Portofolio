@@ -527,23 +527,6 @@ footer {
   border-top: 1px solid var(--border);
 }
 
-.footer-social {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-}
-
-.footer-social a {
-  color: var(--text-primary);
-  font-size: 1.8rem;
-  transition: 0.2s;
-}
-
-.footer-social a:hover {
-  color: var(--accent);
-}
-
 .heart {
   color: var(--accent-2);
   display: inline-block;
