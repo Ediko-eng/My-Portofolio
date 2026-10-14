@@ -1,4 +1,4 @@
-const body = document.body;
+const root = document.documentElement;
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 const themeToggle = document.getElementById('themeToggle');
@@ -13,9 +13,12 @@ const readSavedTheme = () => {
   }
 };
 
+const prefersLight = () =>
+  window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+
 const applyTheme = (theme) => {
   const selectedTheme = theme === 'light' ? 'light' : 'dark';
-  body.setAttribute('data-theme', selectedTheme);
+  root.setAttribute('data-theme', selectedTheme);
   if (themeIcon) {
     themeIcon.classList.toggle('fa-moon', selectedTheme === 'dark');
     themeIcon.classList.toggle('fa-sun', selectedTheme === 'light');
@@ -31,12 +34,12 @@ const applyTheme = (theme) => {
   }
 };
 
-const currentTheme = readSavedTheme();
-applyTheme(currentTheme || 'dark');
+const currentTheme = readSavedTheme() || root.getAttribute('data-theme') || (prefersLight() ? 'light' : 'dark');
+applyTheme(currentTheme);
 
 if (themeToggle) {
   themeToggle.addEventListener('click', () => {
-    const nextTheme = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    const nextTheme = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
     applyTheme(nextTheme);
   });
 }

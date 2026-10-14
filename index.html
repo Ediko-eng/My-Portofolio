@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Edmilson Valente · AI & Web Developer</title>
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('portfolio-theme');
+        var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (error) {}
+    })();
+  </script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,7 +61,7 @@
       <div class="social-links">
         <a href="https://github.com/Ediko-eng" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
         <a href="mailto:edmilsonfabiovalente@gmail.com" class="social-link"><i class="far fa-envelope"></i></a>
-        <a href="https://linkedin.com" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.linkedin.com/in/edmilson-fabio-valente-297687310/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://www.facebook.com/share/1C5Vf6E44g/?mibextid=wwXIfr" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.instagram.com/invites/contact/?igsh=pwoztob2i0l7&utm_content=ok4ruiu" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
       </div>
@@ -201,7 +210,7 @@
   <footer>
     <div class="footer-social">
       <a href="https://github.com/Ediko-eng" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.linkedin.com/in/edmilson-fabio-valente-297687310/" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="https://www.facebook.com/share/1C5Vf6E44g/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
       <a href="https://www.instagram.com/invites/contact/?igsh=pwoztob2i0l7&utm_content=ok4ruiu" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>

@@ -15,7 +15,7 @@
   --shadow: rgba(0, 255, 255, 0.25);
 }
 
-body[data-theme="light"] {
+html[data-theme="light"] {
   --bg-primary: #eef4ff;
   --bg-secondary: #dde8ff;
   --bg-card: rgba(255, 255, 255, 0.75);
@@ -68,7 +68,7 @@ body {
   animation: gradientFlow 15s ease infinite;
 }
 
-body[data-theme="light"] #gradient-bg {
+html[data-theme="light"] #gradient-bg {
   background: linear-gradient(125deg, #e7eefc 0%, #edf3ff 30%, #dfe9ff 60%, #cfe1ff 100%);
 }
 
