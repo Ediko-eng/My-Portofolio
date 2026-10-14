@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-content">
+      <h1 class="hero-title">Hi, I'm <span class="highlight">{{ profile.name }}</span></h1>
+      <p class="hero-subtitle">{{ profile.subtitle }}</p>
+
+      <div class="cta-buttons">
+        <a href="#projects" class="btn btn-primary">View my work</a>
+        <a href="#contact" class="btn btn-secondary">Let's talk</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-image">
+          {% if profile.image|slice:":4" == "http" %}
+            <img src="{{ profile.image }}" alt="{{ profile.name }}">
+          {% else %}
+            <img src="{% static profile.image %}" alt="{{ profile.name }}">
+          {% endif %}
+          <div class="univ-badge">
+            <i class="fas fa-university"></i>
+            <span>{{ profile.university }}</span>
+          </div>
+        </div>
+        <div class="about-text">
+          {{ profile.about|linebreaks }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills &amp; Expertise</h2>
+      <div class="skills-grid">
+        {% for skill in skills %}
+          <div class="skill-card">
+            <div class="skill-icon"><i class="{{ skill.icon }}"></i></div>
+            <h3>{{ skill.title }}</h3>
+            <p>{{ skill.description }}</p>
+          </div>
+        {% empty %}
+          <p class="empty-note">Skills will appear here once added in the admin.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        {% for project in projects %}
+          <div class="project-card">
+            <div class="project-icon"><i class="{{ project.icon }}"></i></div>
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            {% if project.tag_list %}
+              <div class="project-tags">
+                {% for tag in project.tag_list %}<span>{{ tag }}</span>{% endfor %}
+              </div>
+            {% endif %}
+            {% if project.demo_url %}
+              <a href="{{ project.demo_url }}" target="_blank" rel="noopener" class="project-link"><i class="fas fa-arrow-up-right-from-square"></i> Live demo</a>
+            {% endif %}
+            {% if project.github_url %}
+              <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> View on GitHub</a>
+            {% endif %}
+          </div>
+        {% empty %}
+          <p class="empty-note">Projects will appear here once added in the admin.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get in touch</h2>
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="form-alert form-alert--{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+
+      <div class="contact-grid">
+        <a href="mailto:{{ profile.email }}" class="contact-card">
+          <div class="contact-icon"><i class="far fa-envelope"></i></div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">{{ profile.email }}</div>
+        </a>
+        {% if profile.github_url %}
+          <a href="{{ profile.github_url }}" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-icon"><i class="fab fa-github"></i></div>
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value">{{ profile.github_handle }}</div>
+          </a>
+        {% endif %}
+        {% if profile.linkedin_url %}
+          <a href="{{ profile.linkedin_url }}" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">{{ profile.linkedin_label }}</div>
+          </a>
+        {% endif %}
+        {% if profile.facebook_url %}
+          <a href="{{ profile.facebook_url }}" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-icon"><i class="fab fa-facebook"></i></div>
+            <div class="contact-label">Facebook</div>
+            <div class="contact-value">{{ profile.facebook_handle }}</div>
+          </a>
+        {% endif %}
+        {% if profile.instagram_url %}
+          <a href="{{ profile.instagram_url }}" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+            <div class="contact-label">Instagram</div>
+            <div class="contact-value">{{ profile.instagram_handle }}</div>
+          </a>
+        {% endif %}
+      </div>
+
+      <form class="contact-form" method="post" action="{% url 'core:contact' %}">
+        {% csrf_token %}
+        {{ form.website }}
+        <h3>Send me a message</h3>
+
+        {% if form.non_field_errors %}
+          <div class="form-alert form-alert--error">{{ form.non_field_errors }}</div>
+        {% endif %}
+
+        <div class="form-row">
+          <div class="form-field">
+            {{ form.name }}
+            {% for error in form.name.errors %}<span class="field-error">{{ error }}</span>{% endfor %}
+          </div>
+          <div class="form-field">
+            {{ form.email }}
+            {% for error in form.email.errors %}<span class="field-error">{{ error }}</span>{% endfor %}
+          </div>
+        </div>
+        <div class="form-field">
+          {{ form.message }}
+          {% for error in form.message.errors %}<span class="field-error">{{ error }}</span>{% endfor %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send message</button>
+      </form>
+    </div>
+  </section>
+{% endblock %}

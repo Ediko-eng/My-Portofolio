@@ -1,47 +1,99 @@
 # 🚀 Personal Portfolio: Edmilson Valente
 
-*A high-performance, responsive personal website featuring a modern "Glassmorphism" design and dynamic background animations.*
+*A Django-powered personal website featuring a modern "Glassmorphism" design, a
+content-managed admin, and a working contact form.*
 
 ---
 
 ## 📖 Project Overview
-This repository contains the source code for my professional portfolio. The site is designed to showcase my expertise in **AI & Machine Learning**, **Web Development**, and **Software Engineering**. It focuses on a premium user experience (UX) with smooth transitions, responsive grids for mobile devices, and a specialized "Cyberpunk-inspired" dark theme.
 
-## 🚀 Key Features
-* **Dynamic Background:** A custom CSS-animated gradient flow that shifts colors over time using `@keyframes`.
-* **Glassmorphism UI:** Modern frosted-glass effect for cards and navigation bars using `backdrop-filter: blur()`.
-* **Responsive Design:** Fully optimized for desktop, tablet, and mobile screens using CSS Media Queries.
-* **Smooth Scrolling:** Integrated Vanilla JavaScript logic for seamless navigation between sections (About, Skills, Projects, Contact).
-* **Interactive Components:** Hover-state animations, mobile menu toggles, and organized skill-set visualizations.
+This repository contains the source code for my professional portfolio, built with
+**Django**. It showcases my expertise in **AI & Machine Learning**, **Web Development**,
+and **Software Engineering**, with a premium, responsive "Cyberpunk-inspired" design.
+
+Content (profile, skills, and projects) is stored in the database and editable through
+the Django admin — no code changes needed to update the site.
+
+## ✨ Features
+
+* **Database-backed content:** `Profile`, `Skill`, and `Project` models managed in the admin.
+* **Contact form:** saves messages to the database *and* emails them via Gmail SMTP.
+* **Dynamic background & Glassmorphism UI:** animated CSS gradient with frosted-glass cards.
+* **Light / dark theme** respecting the OS preference, with a manual toggle.
+* **SEO ready:** meta tags, Open Graph / Twitter cards, favicon, and JSON-LD `Person` schema.
+* **Responsive:** optimized for desktop, tablet, and mobile.
 
 ## 🛠️ Tech Stack
-* **HTML5:** Semantic structure for SEO optimization and screen-reader accessibility.
-* **CSS3:** Advanced styling including:
-  * **Flexbox & CSS Grid:** For robust, responsive layouts.
-  * **Animations:** `gradientFlow` 15-second loop for the ambient background.
-  * **Custom Variables:** Root-level CSS variables for consistent color branding.
-* **JavaScript (Vanilla):** Light-weight logic for mobile menu interaction and smooth-scroll behavior.
-* **Font Awesome:** Professional iconography for social links and technical skills.
 
-## 📁 Repository Structure
-* **`index.html`**: The main structure of the site, including the Hero, About, Skills, and Projects sections.
-* **`style.css`**: The design system, including the background animations and responsive breakpoints.
-* **`script.js`**: Functional logic for the mobile menu toggle and navigation behavior.
+* **Backend:** Python 3.13, Django 5.2
+* **Database:** SQLite (local) · PostgreSQL (production, via `DATABASE_URL`)
+* **Static files:** WhiteNoise
+* **Server:** Gunicorn
+* **Frontend:** HTML5, CSS3 (Grid/Flexbox, animations), vanilla JavaScript, Font Awesome
 
-## ⚙️ How to Deploy (GitHub Pages)
-You can host this portfolio for free directly on GitHub:
-1.  Upload these files to a new repository named `your-username.github.io`.
-2.  Go to **Settings** > **Pages**.
-3.  Under **Branch**, select `main` and click **Save**.
-4.  Your site will be live at: `https://your-username.github.io`
+## 📁 Project Structure
+
+```
+manage.py
+portfolio/            # Project settings, URLs, WSGI/ASGI
+core/                 # App: models, admin, views, forms, URLs, seed command
+  ├── migrations/
+  └── management/commands/seed_content.py
+templates/
+  ├── base.html       # Shared layout (head, header, footer)
+  └── core/home.html  # Homepage sections
+static/               # css/, js/, img/ (served by WhiteNoise in production)
+build.sh              # Render build script
+render.yaml           # Render Blueprint (web service + Postgres)
+```
+
+## 🚀 Local Development
+
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Configure environment (optional locally; SQLite + console email are defaults)
+copy .env.example .env      # Windows
+
+# 3. Apply migrations and load the current content
+python manage.py migrate
+python manage.py seed_content
+
+# 4. Create an admin account and run the server
+python manage.py createsuperuser
+python manage.py runserver
+```
+
+Open http://127.0.0.1:8000/ — the admin lives at http://127.0.0.1:8000/admin/.
+
+The `seed_content` command is idempotent and can be re-run safely.
+
+## ☁️ Deploy on Render
+
+The repo ships with `render.yaml` (Blueprint) and `build.sh`.
+
+1. Push this branch to GitHub.
+2. In Render, choose **New → Blueprint** and point it at this repository.
+   Render creates the web service **and** a managed Postgres database.
+3. Set the secret environment variables in the dashboard:
+   * `EMAIL_HOST_USER` — your Gmail address
+   * `EMAIL_HOST_PASSWORD` — a Google **app password**
+   * `DEFAULT_FROM_EMAIL` and `CONTACT_RECIPIENT` — the recipient address
+4. Deploy. `build.sh` runs `collectstatic`, `migrate`, and `seed_content` automatically.
+
+> Note: `ALLOWED_HOSTS` and `CSRF_TRUSTED_ORIGINS` include `.onrender.com`, and the app
+> auto-detects `RENDER_EXTERNAL_HOSTNAME`, so the site works without hardcoding its URL.
+> Set `SITE_URL` to your final custom domain for correct canonical / Open Graph links.
 
 ## 📬 Contact Information
-Feel free to reach out for collaborations or inquiries:
+
 * **Email:** [edmilsonfabiovalente@gmail.com](mailto:edmilsonfabiovalente@gmail.com)
 * **GitHub:** [@Ediko-eng](https://github.com/Ediko-eng)
-* **Instagram:** [@edmilson.dev](https://www.instagram.com/edmilson.dev)
+* **LinkedIn:** [Edmilson Fabio Valente](https://www.linkedin.com/in/edmilson-fabio-valente-297687310/)
 
 ---
-**Author:** Edmilson Fabio Valente  
-**Focus:** AI & Web Developer  
+
+**Author:** Edmilson Fabio Valente
+**Focus:** AI & Web Developer
 **License:** [MIT License](https://github.com/Ediko-eng/My-Portofolio/blob/main/LICENSE.md)

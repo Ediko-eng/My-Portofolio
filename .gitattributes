@@ -1,0 +1,3 @@
+# Normalize line endings; keep shell scripts LF for Linux (Render).
+* text=auto
+*.sh text eol=lf
