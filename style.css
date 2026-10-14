@@ -436,6 +436,24 @@ section {
   margin-bottom: 1rem;
 }
 
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 1rem 0 1.5rem;
+}
+
+.project-tags span {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.3rem 0.85rem;
+  border-radius: 50px;
+  background: var(--bg-button);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
 .project-badge {
   display: inline-block;
   background: rgba(0,255,255,0.2);
