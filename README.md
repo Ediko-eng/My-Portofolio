@@ -71,18 +71,18 @@ The `seed_content` command is idempotent and can be re-run safely.
 
 ## ☁️ Deploy on Render
 
-The repo ships with `render.yaml` (Blueprint) and `build.sh`.
+The repo ships with `render.yaml` (Blueprint) and `build.sh`, so the whole stack —
+web service **and** managed Postgres — is provisioned in one step.
 
-1. Push this branch to GitHub.
-2. In Render, choose **New → Blueprint** and point it at this repository.
-   Render creates the web service **and** a managed Postgres database.
-3. Set the secret environment variables in the dashboard:
+1. In Render, choose **New → Blueprint** and point it at this repository
+   (`main` branch). Render creates the web service and the database automatically.
+2. Set the secret environment variables in the dashboard:
    * `EMAIL_HOST_USER` — your Gmail address
    * `EMAIL_HOST_PASSWORD` — a Google **app password**
    * `DEFAULT_FROM_EMAIL` and `CONTACT_RECIPIENT` — the recipient address
    * *(optional)* `DJANGO_SUPERUSER_USERNAME`, `DJANGO_SUPERUSER_EMAIL`,
      `DJANGO_SUPERUSER_PASSWORD` — auto-creates the admin user on first deploy
-4. Deploy. `build.sh` runs `collectstatic`, `migrate`, and `seed_content` automatically.
+3. Deploy. `build.sh` runs `collectstatic`, `migrate`, and `seed_content` automatically.
 
 If you skipped the superuser variables, create the admin via the Render **Shell**:
 
@@ -93,6 +93,18 @@ python manage.py createsuperuser
 > Note: `ALLOWED_HOSTS` and `CSRF_TRUSTED_ORIGINS` include `.onrender.com`, and the app
 > auto-detects `RENDER_EXTERNAL_HOSTNAME`, so the site works without hardcoding its URL.
 > Set `SITE_URL` to your final custom domain for correct canonical / Open Graph links.
+
+### Render free tier notes
+
+* The web service **sleeps** after ~15 minutes of inactivity; the first request
+  afterwards takes a few seconds to wake it up.
+* The free Postgres database **expires after 30 days** — upgrade the plan or migrate
+  the data before then.
+
+## 🌿 Branches
+
+* `main` — production branch, deployed by Render.
+* `django` — kept in sync with `main`.
 
 ## 📬 Contact Information
 
