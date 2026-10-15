@@ -1,0 +1,50 @@
+# Publishes a small redirect page to GitHub Pages so the old static URL
+# (ediko-eng.github.io/My-Portofolio/) forwards to the live Django site on Render.
+name: Deploy redirect page to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build redirect site
+        env:
+          # Set this in Settings → Secrets and variables → Actions → Variables.
+          RENDER_URL: ${{ vars.RENDER_URL }}
+        run: |
+          set -euo pipefail
+          target="${RENDER_URL:-https://github.com/Ediko-eng/My-Portofolio}"
+          mkdir -p _site
+          sed "s|__RENDER_URL__|${target}|g" pages/index.html > _site/index.html
+          touch _site/.nojekyll
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "_site"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

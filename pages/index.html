@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting · Edmilson Valente</title>
+  <meta name="robots" content="noindex">
+  <!-- __RENDER_URL__ is injected at build time from the RENDER_URL repo variable. -->
+  <meta http-equiv="refresh" content="0; url=__RENDER_URL__">
+  <link rel="canonical" href="__RENDER_URL__">
+  <script>window.location.replace("__RENDER_URL__");</script>
+  <style>
+    :root { color-scheme: dark; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #e6f1ff;
+      background: #050510;
+      background-image: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.18), transparent 45%),
+                        radial-gradient(circle at 80% 70%, rgba(191, 0, 255, 0.18), transparent 45%);
+    }
+    .card {
+      text-align: center;
+      padding: 3rem 2.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      max-width: 420px;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      background: linear-gradient(135deg, #00ffff, #bf00ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    p { color: #a8b3cf; margin-bottom: 1.5rem; }
+    .spinner {
+      width: 34px; height: 34px;
+      margin: 0 auto 1.25rem;
+      border: 3px solid rgba(255, 255, 255, 0.15);
+      border-top-color: #00ffff;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    a.btn {
+      display: inline-block;
+      padding: 0.8rem 1.6rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #050510;
+      background: linear-gradient(135deg, #00ffff, #bf00ff);
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo">E.V.Dev</div>
+    <div class="spinner"></div>
+    <p>Taking you to the live site…</p>
+    <a class="btn" href="__RENDER_URL__">Continue to portfolio</a>
+  </main>
+</body>
+</html>

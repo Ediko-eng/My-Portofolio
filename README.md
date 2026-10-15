@@ -101,6 +101,24 @@ python manage.py createsuperuser
 * The free Postgres database **expires after 30 days** — upgrade the plan or migrate
   the data before then.
 
+## 🔁 GitHub Pages redirect
+
+The old static site is replaced by a tiny redirect page (`pages/index.html`) that
+forwards `ediko-eng.github.io/My-Portofolio/` to the live Render URL. The
+`.github/workflows/pages.yml` workflow builds and deploys it on every push to `main`.
+
+To point it at your deployment, set an Actions **variable**:
+
+1. GitHub → **Settings → Secrets and variables → Actions → Variables**.
+2. New variable: name `RENDER_URL`, value your live URL
+   (e.g. `https://my-portfolio-xxxx.onrender.com`).
+3. Re-run the **Deploy redirect page to GitHub Pages** workflow (or push to `main`).
+
+Until `RENDER_URL` is set, the redirect falls back to the GitHub repository.
+
+> GitHub Pages must be set to source **GitHub Actions** (Settings → Pages → Build and
+> deployment → Source: GitHub Actions). Django itself runs on Render, not on Pages.
+
 ## 🌿 Branches
 
 * `main` — production branch, deployed by Render.
