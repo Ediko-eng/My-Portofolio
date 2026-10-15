@@ -80,7 +80,15 @@ The repo ships with `render.yaml` (Blueprint) and `build.sh`.
    * `EMAIL_HOST_USER` — your Gmail address
    * `EMAIL_HOST_PASSWORD` — a Google **app password**
    * `DEFAULT_FROM_EMAIL` and `CONTACT_RECIPIENT` — the recipient address
+   * *(optional)* `DJANGO_SUPERUSER_USERNAME`, `DJANGO_SUPERUSER_EMAIL`,
+     `DJANGO_SUPERUSER_PASSWORD` — auto-creates the admin user on first deploy
 4. Deploy. `build.sh` runs `collectstatic`, `migrate`, and `seed_content` automatically.
+
+If you skipped the superuser variables, create the admin via the Render **Shell**:
+
+```bash
+python manage.py createsuperuser
+```
 
 > Note: `ALLOWED_HOSTS` and `CSRF_TRUSTED_ORIGINS` include `.onrender.com`, and the app
 > auto-detects `RENDER_EXTERNAL_HOSTNAME`, so the site works without hardcoding its URL.

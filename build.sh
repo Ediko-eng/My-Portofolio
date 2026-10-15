@@ -8,3 +8,8 @@ pip install -r requirements.txt
 python manage.py collectstatic --no-input
 python manage.py migrate
 python manage.py seed_content
+
+# Optionally create an admin user from environment variables on first deploy.
+if [ -n "$DJANGO_SUPERUSER_USERNAME" ] && [ -n "$DJANGO_SUPERUSER_PASSWORD" ]; then
+  python manage.py createsuperuser --noinput || true
+fi

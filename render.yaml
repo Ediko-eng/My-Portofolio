@@ -39,6 +39,13 @@ services:
         sync: false
       - key: CONTACT_RECIPIENT
         sync: false
+      # Optional: creates the admin user on first deploy (set in dashboard).
+      - key: DJANGO_SUPERUSER_USERNAME
+        sync: false
+      - key: DJANGO_SUPERUSER_EMAIL
+        sync: false
+      - key: DJANGO_SUPERUSER_PASSWORD
+        sync: false
 
 databases:
   - name: my-portfolio-db
