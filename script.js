@@ -1,69 +1,138 @@
-const root = document.documentElement;
-const menuToggle = document.getElementById('menuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
+(function () {
+  'use strict';
 
-const readSavedTheme = () => {
-  try {
-    return localStorage.getItem('portfolio-theme');
-  } catch (error) {
-    console.warn('Could not read the saved theme preference.', error);
-    return null;
-  }
-};
+  /* ---------- Loader ---------- */
+  var loader = document.getElementById('loader');
+  var fill = document.getElementById('loaderFill');
+  var pct = document.getElementById('loaderPct');
 
-const prefersLight = () =>
-  window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-
-const applyTheme = (theme) => {
-  const selectedTheme = theme === 'light' ? 'light' : 'dark';
-  root.setAttribute('data-theme', selectedTheme);
-  if (themeIcon) {
-    themeIcon.classList.toggle('fa-moon', selectedTheme === 'dark');
-    themeIcon.classList.toggle('fa-sun', selectedTheme === 'light');
-  }
-  if (themeToggle) {
-    themeToggle.setAttribute('aria-label', `Switch to ${selectedTheme === 'dark' ? 'light' : 'dark'} mode`);
-    themeToggle.setAttribute('aria-pressed', String(selectedTheme === 'light'));
-  }
-  try {
-    localStorage.setItem('portfolio-theme', selectedTheme);
-  } catch (error) {
-    console.warn('Could not save the theme preference.', error);
-  }
-};
-
-const currentTheme = readSavedTheme() || root.getAttribute('data-theme') || (prefersLight() ? 'light' : 'dark');
-applyTheme(currentTheme);
-
-if (themeToggle) {
-  themeToggle.addEventListener('click', () => {
-    const nextTheme = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-    applyTheme(nextTheme);
-  });
-}
-
-if (menuToggle && mobileMenu) {
-  menuToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('show');
-  });
-}
-
-// Smooth scrolling for all anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-      if (mobileMenu) mobileMenu.classList.remove('show');
+  var progress = 0;
+  var timer = setInterval(function () {
+    progress += 3 + Math.random() * 9;
+    if (progress >= 100) {
+      progress = 100;
+      clearInterval(timer);
+      setTimeout(function () {
+        loader.classList.add('done');
+        loader.setAttribute('aria-hidden', 'true');
+      }, 350);
     }
-  });
-});
+    fill.style.width = progress.toFixed(0) + '%';
+    pct.textContent = Math.round(progress) + '%';
+  }, 90);
 
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 968 && mobileMenu) {
-    mobileMenu.classList.remove('show');
+  /* ---------- Day / night mode ---------- */
+  var MODE_KEY = 'room-mode';
+  var stored = null;
+  try { stored = localStorage.getItem(MODE_KEY); } catch (e) {}
+  if (stored === 'day') document.body.classList.add('day');
+
+  var modeBtn = document.getElementById('modeToggle');
+  modeBtn.addEventListener('click', function () {
+    var isDay = document.body.classList.toggle('day');
+    modeBtn.setAttribute('aria-label', isDay ? 'Switch to night mode' : 'Switch to day mode');
+    try { localStorage.setItem(MODE_KEY, isDay ? 'day' : 'night'); } catch (e) {}
+  });
+
+  /* ---------- Panels ---------- */
+  var backdrop = document.getElementById('panelBackdrop');
+  var openPanel = null;
+  var lastFocus = null;
+
+  function show(name) {
+    var panel = document.getElementById('panel-' + name);
+    if (!panel) return;
+    if (openPanel) hide();
+    lastFocus = document.activeElement;
+    openPanel = panel;
+    panel.hidden = false;
+    backdrop.classList.add('open');
+    var closeBtn = panel.querySelector('.panel-close');
+    if (closeBtn) closeBtn.focus();
+    hint && hint.classList.add('gone');
   }
-});
+
+  function hide() {
+    if (!openPanel) return;
+    openPanel.hidden = true;
+    openPanel = null;
+    backdrop.classList.remove('open');
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.querySelectorAll('.hotspot[data-panel]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      show(btn.getAttribute('data-panel'));
+    });
+  });
+
+  document.querySelectorAll('.mobile-nav button[data-panel]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      show(btn.getAttribute('data-panel'));
+    });
+  });
+
+  document.querySelectorAll('.panel-close').forEach(function (btn) {
+    btn.addEventListener('click', hide);
+  });
+
+  backdrop.addEventListener('click', hide);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') hide();
+  });
+
+  /* ---------- Hint ---------- */
+  var hint = document.getElementById('hint');
+  if (hint) {
+    setTimeout(function () { hint.classList.add('gone'); }, 14000);
+  }
+
+  /* ---------- Typewriter on the monitor ---------- */
+  var codeEl = document.getElementById('typedCode');
+  if (codeEl) {
+    var lines = [
+      { html: '<span class="k">def</span> <span class="s">build_future</span>()' },
+      { html: '    stack = [<span class="s">"Python"</span>, <span class="s">"Django"</span>]' },
+      { html: '    home  = <span class="s">"Timor-Leste"</span>' },
+      { html: '    <span class="k">return</span> ship(stack, home)' },
+      { html: '' },
+      { html: '<span class="v"># &gt;&gt; portfolio loading...</span>' }
+    ];
+    var full = lines.map(function (l) { return l.html; }).join('\n');
+    var plain = full.replace(/<[^>]+>/g, '');
+    var i = 0;
+
+    function type() {
+      i++;
+      // reveal by plain length but keep html: simple approach — slice html on tag boundaries
+      var shown = 0;
+      var out = '';
+      var pos = 0;
+      while (shown < i && pos < full.length) {
+        if (full[pos] === '<') {
+          var end = full.indexOf('>', pos);
+          out += full.slice(pos, end + 1);
+          pos = end + 1;
+        } else {
+          out += full[pos];
+          pos++;
+          shown++;
+        }
+      }
+      codeEl.innerHTML = out;
+      if (i < plain.length) {
+        setTimeout(type, plain[i] === '\n' ? 240 : 28 + Math.random() * 35);
+      } else {
+        setTimeout(function () {
+          codeEl.innerHTML = full;
+        }, 200);
+      }
+    }
+    setTimeout(type, 1200);
+  }
+
+  /* ---------- Year ---------- */
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+})();
