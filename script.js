@@ -149,7 +149,7 @@
   var aiLines = [
     'Good evening. All systems online.',
     "Welcome to Edmilson's lab, sir.",
-    'Seven projects loaded. Deep learning module ready.',
+    'Eight projects loaded. Deep learning module ready.',
     'Shall I open the portfolio for you?',
     'Arc reactor at 98 percent. Coffee levels: low.',
     'Timor-Leste uplink stable. Ready when you are.',
