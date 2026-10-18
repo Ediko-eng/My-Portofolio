@@ -23,8 +23,8 @@
 
 /* ============ TOKENS ============ */
 :root {
-  --ink: #1a120c;
-  --ink-2: #241a12;
+  --ink: #10151c;
+  --ink-2: #19212b;
   --paper: #f6ead7;
   --sand: #d8c3a2;
   --sand-2: #a8927a;
@@ -165,11 +165,22 @@ body.day .day-sky-art { display: block; }
 .lamp-cone { transition: opacity 400ms var(--ease); }
 body.day .lamp-cone { opacity: 0.35; }
 
+.flag-outside image {
+  transform-box: view-box;
+  transform-origin: 366px 230px;
+  animation: flagwave 4.8s ease-in-out infinite;
+}
+
+@keyframes flagwave {
+  0%, 100% { transform: rotate(-1.2deg); }
+  50%      { transform: rotate(1.2deg); }
+}
+
 .spine-label {
   font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.14em;
-  fill: rgba(26, 18, 12, 0.78);
+  fill: rgba(16, 21, 28, 0.78);
   font-weight: 600;
 }
 
@@ -183,7 +194,7 @@ body.day .lamp-cone { opacity: 0.35; }
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.08em;
-  fill: rgba(26, 18, 12, 0.55);
+  fill: rgba(16, 21, 28, 0.55);
 }
 
 .steam rect {
@@ -259,7 +270,7 @@ body.day .lamp-cone { opacity: 0.35; }
   padding: 6px 10px;
   border-radius: 6px;
   border: 1px solid rgba(216, 195, 162, 0.3);
-  background: rgba(26, 18, 12, 0.94);
+  background: rgba(16, 21, 28, 0.94);
   color: var(--amber);
   font-family: var(--font-mono);
   font-size: 10px;
@@ -283,7 +294,7 @@ body.day .lamp-cone { opacity: 0.35; }
   z-index: 6;
   font-size: 12.5px;
   color: var(--sand-2);
-  background: rgba(26, 18, 12, 0.72);
+  background: rgba(16, 21, 28, 0.72);
   border: 1px solid rgba(216, 195, 162, 0.18);
   border-radius: 999px;
   padding: 7px 14px;
@@ -373,7 +384,23 @@ body.day .lamp-cone { opacity: 0.35; }
   margin-bottom: 18px;
 }
 
-.panel-title .flag { font-family: var(--font-sans); }
+.panel-title .flag {
+  height: 0.6em;
+  width: auto;
+  display: inline-block;
+  vertical-align: baseline;
+  margin-right: 10px;
+  border-radius: 2px;
+}
+
+.flag-sm {
+  height: 11px;
+  width: auto;
+  display: inline-block;
+  vertical-align: baseline;
+  margin-right: 6px;
+  border-radius: 1px;
+}
 
 .panel p {
   font-size: 14px;
@@ -461,7 +488,7 @@ body.day .lamp-cone { opacity: 0.35; }
   font-family: var(--font-mono);
   font-size: 11.5px;
   color: var(--sand);
-  background: rgba(26, 18, 12, 0.6);
+  background: rgba(16, 21, 28, 0.6);
   border: 1px solid rgba(216, 195, 162, 0.25);
   border-radius: 999px;
   padding: 4px 11px;
@@ -588,7 +615,7 @@ body.day .lamp-cone { opacity: 0.35; }
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: rgba(36, 26, 18, 0.9);
+  background: rgba(25, 33, 43, 0.9);
   border: 1px solid rgba(216, 195, 162, 0.28);
   color: var(--amber);
   display: flex;
@@ -629,7 +656,7 @@ body.day .mode-toggle .icon-moon { display: none; }
   font-size: 12.5px;
   font-weight: 600;
   color: var(--paper);
-  background: rgba(36, 26, 18, 0.92);
+  background: rgba(25, 33, 43, 0.92);
   border: 1px solid rgba(216, 195, 162, 0.3);
   border-radius: 999px;
   padding: 8px 14px;

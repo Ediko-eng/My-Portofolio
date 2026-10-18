@@ -78,20 +78,20 @@
       <svg class="room-art" viewBox="0 0 1600 900" preserveAspectRatio="none" aria-hidden="true">
         <defs>
           <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#2a1d14"/>
-            <stop offset="1" stop-color="#1f150e"/>
+            <stop offset="0" stop-color="#232d3a"/>
+            <stop offset="1" stop-color="#1a222d"/>
           </linearGradient>
           <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#170f0a"/>
-            <stop offset="1" stop-color="#100a07"/>
+            <stop offset="0" stop-color="#131922"/>
+            <stop offset="1" stop-color="#0c1017"/>
           </linearGradient>
           <linearGradient id="dayWall" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#3d2c1e"/>
-            <stop offset="1" stop-color="#2e2116"/>
+            <stop offset="0" stop-color="#364453"/>
+            <stop offset="1" stop-color="#2a3542"/>
           </linearGradient>
           <linearGradient id="dayFloor" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#2a1c12"/>
-            <stop offset="1" stop-color="#20150d"/>
+            <stop offset="0" stop-color="#232c38"/>
+            <stop offset="1" stop-color="#1b222c"/>
           </linearGradient>
           <linearGradient id="nightSky" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stop-color="#0b1026"/>
@@ -120,7 +120,7 @@
         <!-- wall & floor -->
         <rect class="wall" x="0" y="0" width="1600" height="660" fill="url(#wallGrad)"/>
         <rect class="floor" x="0" y="660" width="1600" height="240" fill="url(#floorGrad)"/>
-        <rect x="0" y="656" width="1600" height="6" fill="#0d0906"/>
+        <rect x="0" y="656" width="1600" height="6" fill="#0a0e14"/>
         <ellipse cx="760" cy="770" rx="520" ry="90" fill="url(#pool)"/>
 
         <!-- pennant string -->
@@ -165,10 +165,22 @@
             <ellipse cx="340" cy="290" rx="36" ry="12" fill="#f6ead7" opacity="0.7"/>
             <path d="M 84 400 L 130 360 L 170 390 L 210 350 L 260 392 L 310 356 L 360 388 L 406 364 L 406 446 L 84 446 Z" fill="#4a3a56" opacity="0.55"/>
           </g>
+          <!-- Timor-Leste flag flying over Dili -->
+          <g class="flag-outside">
+            <rect x="364" y="208" width="5" height="240" rx="2" fill="#8a93a5"/>
+            <circle cx="366.5" cy="206" r="5" fill="#f4a640"/>
+            <image href="flag-timor-leste.svg" x="284" y="216" width="76" height="38" preserveAspectRatio="xMidYMid meet"/>
+          </g>
         </g>
         <rect x="238" y="142" width="12" height="304" fill="#3a2a1c"/>
         <rect x="84" y="288" width="322" height="12" fill="#3a2a1c"/>
         <rect x="60" y="458" width="370" height="16" rx="4" fill="#4a3724"/>
+        <!-- Timor-Leste flag on the window sill -->
+        <g>
+          <ellipse cx="392" cy="458" rx="16" ry="4" fill="#3a2a1c"/>
+          <rect x="390" y="416" width="4" height="42" rx="2" fill="#8a93a5"/>
+          <image href="flag-timor-leste.svg" x="356" y="418" width="34" height="17" preserveAspectRatio="xMidYMid meet"/>
+        </g>
 
         <!-- bookshelf -->
         <rect x="1156" y="150" width="312" height="420" rx="6" fill="#33241755" />
@@ -339,7 +351,7 @@
       <section class="panel" id="panel-about" role="dialog" aria-modal="true" aria-labelledby="about-title" hidden>
         <button class="panel-close" aria-label="Close panel">&times;</button>
         <p class="panel-kicker">who I am</p>
-        <h2 id="about-title" class="panel-title">About me</h2>
+        <h2 id="about-title" class="panel-title"><img class="flag" src="flag-timor-leste.svg" alt="" width="30" height="15">About me</h2>
         <div class="about-layout">
           <img class="panel-photo" src="Image.png" alt="Edmilson Fabio Valente" width="160" height="160">
           <div>
@@ -349,7 +361,7 @@
           </div>
         </div>
         <dl class="facts">
-          <div><dt>Location</dt><dd>Dili, Timor-Leste</dd></div>
+          <div><dt>Location</dt><dd><img class="flag-sm" src="flag-timor-leste.svg" alt="" width="18" height="9">Dili, Timor-Leste</dd></div>
           <div><dt>Study</dt><dd>UNTL · Informatics Engineering</dd></div>
           <div><dt>Focus</dt><dd>Web Development · ML / AI</dd></div>
           <div><dt>Status</dt><dd class="is-status">Open for opportunities</dd></div>
