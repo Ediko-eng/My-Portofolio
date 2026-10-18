@@ -4,6 +4,7 @@ services:
   - type: web
     name: my-portfolio
     runtime: python
+    region: singapore
     plan: free
     buildCommand: "./build.sh"
     startCommand: "gunicorn portfolio.wsgi:application"
@@ -49,4 +50,5 @@ services:
 
 databases:
   - name: my-portfolio-db
+    region: singapore
     plan: free
