@@ -65,7 +65,7 @@
   <div class="loader" id="loader" role="status" aria-live="polite">
     <p class="loader-name">EDMILSON VALENTE</p>
     <p class="loader-role">Web Developer &bull; ML / AI</p>
-    <p class="loader-msg">Lighting the desk&hellip;</p>
+    <p class="loader-msg">Powering the arc reactor&hellip;</p>
     <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
     <p class="loader-pct" id="loaderPct">0%</p>
   </div>
@@ -76,20 +76,20 @@
       <svg class="room-art" viewBox="0 0 1600 900" preserveAspectRatio="none" aria-hidden="true">
         <defs>
           <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#232d3a"/>
-            <stop offset="1" stop-color="#1a222d"/>
+            <stop offset="0" stop-color="#1b2635"/>
+            <stop offset="1" stop-color="#131c29"/>
           </linearGradient>
           <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#131922"/>
-            <stop offset="1" stop-color="#0c1017"/>
+            <stop offset="0" stop-color="#111822"/>
+            <stop offset="1" stop-color="#080c12"/>
           </linearGradient>
           <linearGradient id="dayWall" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#364453"/>
-            <stop offset="1" stop-color="#2a3542"/>
+            <stop offset="0" stop-color="#3a4c63"/>
+            <stop offset="1" stop-color="#2c3c52"/>
           </linearGradient>
           <linearGradient id="dayFloor" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#232c38"/>
-            <stop offset="1" stop-color="#1b222c"/>
+            <stop offset="0" stop-color="#26313f"/>
+            <stop offset="1" stop-color="#1d2733"/>
           </linearGradient>
           <linearGradient id="nightSky" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stop-color="#0b1026"/>
@@ -97,106 +97,133 @@
           </linearGradient>
           <linearGradient id="daySky" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stop-color="#7fb2d8"/>
-            <stop offset="1" stop-color="#d8c3a2"/>
+            <stop offset="1" stop-color="#9fb6cc"/>
           </linearGradient>
           <radialGradient id="lampCone" cx="0.5" cy="0" r="1">
-            <stop offset="0" stop-color="#f4a640" stop-opacity="0.34"/>
-            <stop offset="1" stop-color="#f4a640" stop-opacity="0"/>
+            <stop offset="0" stop-color="#3fd4ff" stop-opacity="0.34"/>
+            <stop offset="1" stop-color="#3fd4ff" stop-opacity="0"/>
           </radialGradient>
           <radialGradient id="pool" cx="0.5" cy="0.5" r="0.5">
-            <stop offset="0" stop-color="#f4a640" stop-opacity="0.14"/>
-            <stop offset="1" stop-color="#f4a640" stop-opacity="0"/>
+            <stop offset="0" stop-color="#3fd4ff" stop-opacity="0.14"/>
+            <stop offset="1" stop-color="#3fd4ff" stop-opacity="0"/>
           </radialGradient>
           <linearGradient id="screenGlow" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#101820"/>
-            <stop offset="1" stop-color="#0a0f14"/>
+            <stop offset="0" stop-color="#071620"/>
+            <stop offset="1" stop-color="#030c14"/>
           </linearGradient>
+          <pattern id="wallGrid" width="80" height="80" patternUnits="userSpaceOnUse">
+            <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#3fd4ff" stroke-opacity="0.05" stroke-width="1.5"/>
+          </pattern>
+          <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="6" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
           <clipPath id="portraitClip"><rect x="686" y="118" width="168" height="204" rx="6"/></clipPath>
           <clipPath id="skyClip"><rect x="84" y="142" width="322" height="304" rx="4"/></clipPath>
         </defs>
 
         <!-- wall & floor -->
         <rect class="wall" x="0" y="0" width="1600" height="660" fill="url(#wallGrad)"/>
+        <rect x="0" y="0" width="1600" height="660" fill="url(#wallGrid)"/>
         <rect class="floor" x="0" y="660" width="1600" height="240" fill="url(#floorGrad)"/>
         <rect x="0" y="656" width="1600" height="6" fill="#0a0e14"/>
+        <rect x="0" y="662" width="1600" height="3" fill="#3fd4ff" opacity="0.3" filter="url(#glow)"/>
         <ellipse cx="760" cy="770" rx="520" ry="90" fill="url(#pool)"/>
 
-        <!-- pennant string -->
-        <path d="M 470 78 Q 800 118 1140 74" stroke="#5c4630" stroke-width="3" fill="none"/>
+        <!-- arc reactor on the wall -->
+        <g transform="translate(545 232)">
+          <circle r="52" fill="#0e1520" stroke="#222d3d" stroke-width="4"/>
+          <circle r="43" fill="none" stroke="#3fd4ff" stroke-opacity="0.7" stroke-width="3"/>
+          <g fill="#3fd4ff" filter="url(#glow)">
+            <rect x="-36" y="-6" width="22" height="12" rx="3"/>
+            <rect x="14" y="-6" width="22" height="12" rx="3"/>
+            <rect x="-6" y="-36" width="12" height="22" rx="3"/>
+            <rect x="-6" y="14" width="12" height="22" rx="3"/>
+          </g>
+          <circle class="arc-reactor-core" r="18" fill="#8fe8ff"/>
+          <circle r="9" fill="#e8fbff"/>
+        </g>
+
+        <!-- LED string -->
+        <path d="M 470 78 Q 800 118 1140 74" stroke="#33455e" stroke-width="3" fill="none"/>
         <g class="pennants">
-          <polygon points="520,88 552,88 536,126" fill="#dc241f"/>
-          <polygon points="528,96 544,96 536,116" fill="#ffc726"/>
-          <polygon points="610,96 642,96 626,134" fill="#f4a640"/>
-          <polygon points="700,104 732,104 716,142" fill="#e0662f"/>
-          <polygon points="790,108 822,108 806,146" fill="#dc241f"/>
-          <polygon points="798,116 814,116 806,136" fill="#ffc726"/>
-          <polygon points="880,104 912,104 896,142" fill="#7fbf68"/>
-          <polygon points="970,96 1002,96 986,134" fill="#f4a640"/>
-          <polygon points="1055,86 1087,86 1071,124" fill="#e0662f"/>
+          <circle class="led" cx="490" cy="80" r="7" fill="#3fd4ff" filter="url(#glow)"/>
+          <circle class="led" cx="560" cy="87" r="7" fill="#e23a3a" filter="url(#glow)"/>
+          <circle class="led" cx="640" cy="93" r="7" fill="#ffc726" filter="url(#glow)"/>
+          <circle class="led" cx="720" cy="96" r="7" fill="#3fd4ff" filter="url(#glow)"/>
+          <circle class="led" cx="800" cy="97" r="7" fill="#e23a3a" filter="url(#glow)"/>
+          <circle class="led" cx="880" cy="96" r="7" fill="#ffc726" filter="url(#glow)"/>
+          <circle class="led" cx="960" cy="92" r="7" fill="#3fd4ff" filter="url(#glow)"/>
+          <circle class="led" cx="1040" cy="85" r="7" fill="#e23a3a" filter="url(#glow)"/>
+          <circle class="led" cx="1120" cy="73" r="7" fill="#ffc726" filter="url(#glow)"/>
         </g>
 
         <!-- window -->
-        <rect x="72" y="130" width="346" height="328" rx="8" fill="#3a2a1c"/>
+        <rect x="72" y="130" width="346" height="328" rx="8" fill="#222d3d"/>
         <rect x="84" y="142" width="322" height="304" rx="4" fill="url(#nightSky)" class="sky"/>
         <g clip-path="url(#skyClip)">
           <g class="night-sky-art">
-            <circle cx="150" cy="210" r="34" fill="#f6ead7" opacity="0.92"/>
+            <circle cx="150" cy="210" r="34" fill="#dff6ff" opacity="0.92"/>
             <circle cx="164" cy="202" r="30" fill="#0b1026" opacity="0.9"/>
-            <circle cx="330" cy="190" r="2" fill="#f6ead7"/>
-            <circle cx="370" cy="240" r="1.6" fill="#f6ead7" opacity="0.8"/>
-            <circle cx="290" cy="170" r="1.4" fill="#f6ead7" opacity="0.7"/>
-            <circle cx="240" cy="260" r="1.5" fill="#f6ead7" opacity="0.6"/>
-            <circle cx="360" cy="300" r="1.3" fill="#f6ead7" opacity="0.7"/>
-            <circle cx="120" cy="320" r="1.4" fill="#f6ead7" opacity="0.5"/>
-            <circle cx="200" cy="180" r="1.2" fill="#f6ead7" opacity="0.6"/>
-            <circle cx="300" cy="330" r="1.5" fill="#f6ead7" opacity="0.55"/>
+            <circle cx="330" cy="190" r="2" fill="#dff6ff"/>
+            <circle cx="370" cy="240" r="1.6" fill="#dff6ff" opacity="0.8"/>
+            <circle cx="290" cy="170" r="1.4" fill="#dff6ff" opacity="0.7"/>
+            <circle cx="240" cy="260" r="1.5" fill="#dff6ff" opacity="0.6"/>
+            <circle cx="360" cy="300" r="1.3" fill="#dff6ff" opacity="0.7"/>
+            <circle cx="120" cy="320" r="1.4" fill="#dff6ff" opacity="0.5"/>
+            <circle cx="200" cy="180" r="1.2" fill="#dff6ff" opacity="0.6"/>
+            <circle cx="300" cy="330" r="1.5" fill="#dff6ff" opacity="0.55"/>
             <path d="M 84 400 L 130 360 L 170 390 L 210 350 L 260 392 L 310 356 L 360 388 L 406 364 L 406 446 L 84 446 Z" fill="#131a2c"/>
-            <rect x="118" y="378" width="8" height="10" fill="#f4a640" opacity="0.85"/>
-            <rect x="206" y="372" width="8" height="10" fill="#f4a640" opacity="0.7"/>
-            <rect x="304" y="376" width="8" height="10" fill="#f4a640" opacity="0.8"/>
-            <rect x="348" y="382" width="8" height="10" fill="#f4a640" opacity="0.6"/>
+            <rect x="118" y="378" width="8" height="10" fill="#3fd4ff" opacity="0.85"/>
+            <rect x="206" y="372" width="8" height="10" fill="#3fd4ff" opacity="0.7"/>
+            <rect x="304" y="376" width="8" height="10" fill="#3fd4ff" opacity="0.8"/>
+            <rect x="348" y="382" width="8" height="10" fill="#3fd4ff" opacity="0.6"/>
           </g>
           <g class="day-sky-art">
             <circle cx="330" cy="200" r="38" fill="#ffe9b0"/>
-            <ellipse cx="160" cy="230" rx="42" ry="14" fill="#f6ead7" opacity="0.85"/>
-            <ellipse cx="196" cy="222" rx="26" ry="12" fill="#f6ead7" opacity="0.85"/>
-            <ellipse cx="340" cy="290" rx="36" ry="12" fill="#f6ead7" opacity="0.7"/>
+            <ellipse cx="160" cy="230" rx="42" ry="14" fill="#dff6ff" opacity="0.85"/>
+            <ellipse cx="196" cy="222" rx="26" ry="12" fill="#dff6ff" opacity="0.85"/>
+            <ellipse cx="340" cy="290" rx="36" ry="12" fill="#dff6ff" opacity="0.7"/>
             <path d="M 84 400 L 130 360 L 170 390 L 210 350 L 260 392 L 310 356 L 360 388 L 406 364 L 406 446 L 84 446 Z" fill="#4a3a56" opacity="0.55"/>
           </g>
           <!-- Timor-Leste flag flying over Dili -->
           <g class="flag-outside">
             <rect x="364" y="208" width="5" height="240" rx="2" fill="#8a93a5"/>
-            <circle cx="366.5" cy="206" r="5" fill="#f4a640"/>
+            <circle cx="366.5" cy="206" r="5" fill="#3fd4ff"/>
             <image href="flag-timor-leste.svg" x="284" y="216" width="76" height="38" preserveAspectRatio="xMidYMid meet"/>
           </g>
         </g>
-        <rect x="238" y="142" width="12" height="304" fill="#3a2a1c"/>
-        <rect x="84" y="288" width="322" height="12" fill="#3a2a1c"/>
-        <rect x="60" y="458" width="370" height="16" rx="4" fill="#4a3724"/>
+        <rect x="238" y="142" width="12" height="304" fill="#222d3d"/>
+        <rect x="84" y="288" width="322" height="12" fill="#222d3d"/>
+        <rect x="60" y="458" width="370" height="16" rx="4" fill="#2c3a4e"/>
         <!-- Timor-Leste flag on the window sill -->
         <g>
-          <ellipse cx="392" cy="458" rx="16" ry="4" fill="#3a2a1c"/>
+          <ellipse cx="392" cy="458" rx="16" ry="4" fill="#222d3d"/>
           <rect x="390" y="416" width="4" height="42" rx="2" fill="#8a93a5"/>
           <image href="flag-timor-leste.svg" x="356" y="418" width="34" height="17" preserveAspectRatio="xMidYMid meet"/>
         </g>
 
         <!-- bookshelf -->
         <rect x="1156" y="150" width="312" height="420" rx="6" fill="#33241755" />
-        <rect x="1150" y="144" width="324" height="432" rx="8" fill="#3a2a1c"/>
-        <rect x="1162" y="156" width="300" height="408" rx="4" fill="#241a12"/>
-        <rect x="1162" y="286" width="300" height="10" fill="#3a2a1c"/>
-        <rect x="1162" y="416" width="300" height="10" fill="#3a2a1c"/>
+        <rect x="1150" y="144" width="324" height="432" rx="8" fill="#222d3d"/>
+        <rect x="1162" y="156" width="300" height="408" rx="4" fill="#0e1520"/>
+        <rect x="1162" y="286" width="300" height="10" fill="#222d3d"/>
+        <rect x="1162" y="416" width="300" height="10" fill="#222d3d"/>
         <!-- shelf 1 books -->
         <g>
-          <rect x="1176" y="196" width="26" height="90" rx="2" fill="#f4a640"/>
-          <rect x="1206" y="182" width="22" height="104" rx="2" fill="#e0662f"/>
+          <rect x="1176" y="196" width="26" height="90" rx="2" fill="#3fd4ff"/>
+          <rect x="1206" y="182" width="22" height="104" rx="2" fill="#e23a3a"/>
           <rect x="1232" y="204" width="28" height="82" rx="2" fill="#7fbf68"/>
           <rect x="1264" y="188" width="24" height="98" rx="2" fill="#dc241f"/>
-          <rect x="1292" y="200" width="26" height="86" rx="2" fill="#d8c3a2"/>
+          <rect x="1292" y="200" width="26" height="86" rx="2" fill="#9fb6cc"/>
           <rect x="1322" y="190" width="22" height="96" rx="2" fill="#ffc726"/>
-          <rect x="1348" y="206" width="30" height="80" rx="2" fill="#a8927a"/>
-          <rect x="1382" y="186" width="24" height="100" rx="2" fill="#f4a640"/>
-          <rect x="1410" y="198" width="26" height="88" rx="2" fill="#e0662f"/>
+          <rect x="1348" y="206" width="30" height="80" rx="2" fill="#5f7690"/>
+          <rect x="1382" y="186" width="24" height="100" rx="2" fill="#3fd4ff"/>
+          <rect x="1410" y="198" width="26" height="88" rx="2" fill="#e23a3a"/>
           <text x="1189" y="278" class="spine-label" transform="rotate(-90 1189 278)">PYTHON</text>
           <text x="1246" y="278" class="spine-label" transform="rotate(-90 1246 278)">DJANGO</text>
           <text x="1333" y="278" class="spine-label" transform="rotate(-90 1333 278)">SQL</text>
@@ -204,105 +231,105 @@
         <!-- shelf 2 books -->
         <g>
           <rect x="1176" y="326" width="24" height="90" rx="2" fill="#7fbf68"/>
-          <rect x="1204" y="338" width="28" height="78" rx="2" fill="#f4a640"/>
-          <rect x="1236" y="330" width="22" height="86" rx="2" fill="#d8c3a2"/>
-          <rect x="1262" y="342" width="26" height="74" rx="2" fill="#e0662f"/>
+          <rect x="1204" y="338" width="28" height="78" rx="2" fill="#3fd4ff"/>
+          <rect x="1236" y="330" width="22" height="86" rx="2" fill="#9fb6cc"/>
+          <rect x="1262" y="342" width="26" height="74" rx="2" fill="#e23a3a"/>
           <rect x="1292" y="328" width="24" height="88" rx="2" fill="#ffc726"/>
           <rect x="1320" y="340" width="30" height="76" rx="2" fill="#dc241f"/>
-          <rect x="1354" y="332" width="22" height="84" rx="2" fill="#a8927a"/>
+          <rect x="1354" y="332" width="22" height="84" rx="2" fill="#5f7690"/>
           <rect x="1380" y="344" width="26" height="72" rx="2" fill="#7fbf68"/>
-          <rect x="1410" y="330" width="24" height="86" rx="2" fill="#f4a640"/>
+          <rect x="1410" y="330" width="24" height="86" rx="2" fill="#3fd4ff"/>
           <text x="1188" y="406" class="spine-label" transform="rotate(-90 1188 406)">JS</text>
           <text x="1304" y="406" class="spine-label" transform="rotate(-90 1304 406)">ML</text>
         </g>
         <!-- shelf 3: plant + stack -->
         <g>
-          <rect x="1180" y="470" width="64" height="42" rx="4" fill="#e0662f"/>
-          <rect x="1186" y="462" width="52" height="12" rx="3" fill="#c45528"/>
+          <rect x="1180" y="470" width="64" height="42" rx="4" fill="#e23a3a"/>
+          <rect x="1186" y="462" width="52" height="12" rx="3" fill="#a82a24"/>
           <path d="M 1212 462 Q 1198 424 1178 410" stroke="#7fbf68" stroke-width="7" fill="none" stroke-linecap="round"/>
           <path d="M 1212 462 Q 1216 418 1238 400" stroke="#7fbf68" stroke-width="7" fill="none" stroke-linecap="round"/>
           <path d="M 1212 462 Q 1204 430 1210 402" stroke="#8fd078" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <rect x="1280" y="500" width="72" height="12" rx="3" fill="#d8c3a2"/>
-          <rect x="1288" y="488" width="64" height="12" rx="3" fill="#f4a640"/>
-          <rect x="1294" y="476" width="56" height="12" rx="3" fill="#e0662f"/>
+          <rect x="1280" y="500" width="72" height="12" rx="3" fill="#9fb6cc"/>
+          <rect x="1288" y="488" width="64" height="12" rx="3" fill="#3fd4ff"/>
+          <rect x="1294" y="476" width="56" height="12" rx="3" fill="#e23a3a"/>
         </g>
 
         <!-- portrait -->
-        <rect x="674" y="106" width="192" height="228" rx="10" fill="#3a2a1c"/>
-        <rect x="682" y="114" width="176" height="212" rx="7" fill="#241a12"/>
+        <rect x="674" y="106" width="192" height="228" rx="10" fill="#222d3d"/>
+        <rect x="682" y="114" width="176" height="212" rx="7" fill="#0e1520"/>
         <image href="Image.png" x="686" y="118" width="168" height="204" preserveAspectRatio="xMidYMin slice" clip-path="url(#portraitClip)"/>
-        <rect x="674" y="106" width="192" height="228" rx="10" fill="none" stroke="#f4a640" stroke-opacity="0.35" stroke-width="2"/>
+        <rect x="674" y="106" width="192" height="228" rx="10" fill="none" stroke="#3fd4ff" stroke-opacity="0.35" stroke-width="2"/>
 
         <!-- notice board -->
-        <rect x="892" y="132" width="230" height="212" rx="8" fill="#3a2a1c"/>
-        <rect x="900" y="140" width="214" height="196" rx="4" fill="#6b5138"/>
+        <rect x="892" y="132" width="230" height="212" rx="8" fill="#222d3d"/>
+        <rect x="900" y="140" width="214" height="196" rx="4" fill="#0e2433"/>
         <g class="notes">
           <g transform="rotate(-2 955 190)">
-            <rect x="914" y="156" width="82" height="58" rx="3" fill="#f6ead7"/>
+            <rect x="914" y="156" width="82" height="58" rx="3" fill="#dff6ff"/>
             <text x="955" y="182" class="note-label" text-anchor="middle">About</text>
             <text x="955" y="198" class="note-sub" text-anchor="middle">who I am</text>
           </g>
           <g transform="rotate(1.5 1063 188)">
-            <rect x="1022" y="154" width="82" height="58" rx="3" fill="#f4e3c0"/>
+            <rect x="1022" y="154" width="82" height="58" rx="3" fill="#cfeeff"/>
             <text x="1063" y="180" class="note-label" text-anchor="middle">Skills</text>
             <text x="1063" y="196" class="note-sub" text-anchor="middle">the shelf</text>
           </g>
           <g transform="rotate(1 952 272)">
-            <rect x="912" y="248" width="82" height="58" rx="3" fill="#f4e3c0"/>
+            <rect x="912" y="248" width="82" height="58" rx="3" fill="#cfeeff"/>
             <text x="953" y="274" class="note-label" text-anchor="middle">Projects</text>
             <text x="953" y="290" class="note-sub" text-anchor="middle">what I build</text>
           </g>
           <g transform="rotate(-1.5 1062 270)">
-            <rect x="1020" y="246" width="82" height="58" rx="3" fill="#f6ead7"/>
+            <rect x="1020" y="246" width="82" height="58" rx="3" fill="#dff6ff"/>
             <text x="1061" y="272" class="note-label" text-anchor="middle">Contact</text>
             <text x="1061" y="288" class="note-sub" text-anchor="middle">say hi</text>
           </g>
         </g>
         <circle cx="955" cy="152" r="5" fill="#dc241f"/>
-        <circle cx="1063" cy="150" r="5" fill="#f4a640"/>
+        <circle cx="1063" cy="150" r="5" fill="#3fd4ff"/>
 
         <!-- desk -->
-        <rect x="330" y="560" width="850" height="26" rx="6" fill="#4a3724"/>
-        <rect x="330" y="586" width="850" height="12" fill="#3a2a1c"/>
-        <rect x="360" y="598" width="26" height="180" fill="#3a2a1c"/>
-        <rect x="1124" y="598" width="26" height="180" fill="#3a2a1c"/>
-        <rect x="386" y="640" width="738" height="10" fill="#2e2116"/>
+        <rect x="330" y="560" width="850" height="26" rx="6" fill="#2c3a4e"/>
+        <rect x="330" y="586" width="850" height="12" fill="#222d3d"/>
+        <rect x="360" y="598" width="26" height="180" fill="#222d3d"/>
+        <rect x="1124" y="598" width="26" height="180" fill="#222d3d"/>
+        <rect x="386" y="640" width="738" height="10" fill="#131b27"/>
 
         <!-- lamp -->
-        <rect x="1046" y="536" width="64" height="10" rx="4" fill="#5c4630"/>
-        <rect x="1072" y="452" width="10" height="88" fill="#5c4630"/>
-        <path d="M 1040 452 L 1114 452 L 1102 424 L 1052 424 Z" fill="#f4a640"/>
-        <circle cx="1077" cy="450" r="7" fill="#ffe9b0"/>
+        <rect x="1046" y="536" width="64" height="10" rx="4" fill="#33455e"/>
+        <rect x="1072" y="452" width="10" height="88" fill="#33455e"/>
+        <path d="M 1040 452 L 1114 452 L 1102 424 L 1052 424 Z" fill="#f0b643"/>
+        <circle cx="1077" cy="450" r="7" fill="#eaffff"/>
         <polygon class="lamp-cone" points="1052,452 1102,452 1170,600 980,600" fill="url(#lampCone)"/>
 
         <!-- monitors -->
         <g>
           <rect x="420" y="366" width="360" height="212" rx="10" fill="#0f0b08"/>
           <rect x="432" y="378" width="336" height="180" rx="5" fill="url(#screenGlow)" class="screen"/>
-          <rect x="574" y="578" width="52" height="26" fill="#2e2116"/>
-          <rect x="540" y="600" width="120" height="10" rx="5" fill="#3a2a1c"/>
+          <rect x="574" y="578" width="52" height="26" fill="#131b27"/>
+          <rect x="540" y="600" width="120" height="10" rx="5" fill="#222d3d"/>
           <rect x="798" y="392" width="290" height="176" rx="10" fill="#0f0b08"/>
           <rect x="808" y="402" width="270" height="152" rx="5" fill="url(#screenGlow)" class="screen"/>
-          <rect x="920" y="568" width="46" height="26" fill="#2e2116"/>
-          <rect x="892" y="590" width="104" height="10" rx="5" fill="#3a2a1c"/>
+          <rect x="920" y="568" width="46" height="26" fill="#131b27"/>
+          <rect x="892" y="590" width="104" height="10" rx="5" fill="#222d3d"/>
           <!-- right screen mini UI -->
-          <rect x="822" y="416" width="110" height="12" rx="3" fill="#f4a640" opacity="0.9"/>
-          <rect x="822" y="438" width="240" height="8" rx="3" fill="#d8c3a2" opacity="0.5"/>
-          <rect x="822" y="452" width="200" height="8" rx="3" fill="#d8c3a2" opacity="0.35"/>
-          <rect x="822" y="476" width="72" height="56" rx="4" fill="#e0662f" opacity="0.85"/>
-          <rect x="906" y="476" width="72" height="56" rx="4" fill="#7fbf68" opacity="0.8"/>
-          <rect x="990" y="476" width="72" height="56" rx="4" fill="#f4a640" opacity="0.75"/>
+          <rect x="822" y="416" width="110" height="12" rx="3" fill="#3fd4ff" opacity="0.9"/>
+          <rect x="822" y="438" width="240" height="8" rx="3" fill="#9fb6cc" opacity="0.5"/>
+          <rect x="822" y="452" width="200" height="8" rx="3" fill="#9fb6cc" opacity="0.35"/>
+          <rect x="822" y="476" width="72" height="56" rx="4" fill="#e23a3a" opacity="0.85"/>
+          <rect x="906" y="476" width="72" height="56" rx="4" fill="#ffc726" opacity="0.8"/>
+          <rect x="990" y="476" width="72" height="56" rx="4" fill="#3fd4ff" opacity="0.75"/>
         </g>
 
         <!-- keyboard + mouse -->
-        <rect x="520" y="614" width="250" height="18" rx="5" fill="#241a12"/>
-        <rect x="784" y="616" width="36" height="22" rx="9" fill="#241a12"/>
+        <rect x="520" y="614" width="250" height="18" rx="5" fill="#0e1520"/>
+        <rect x="784" y="616" width="36" height="22" rx="9" fill="#0e1520"/>
 
         <!-- mug -->
         <g>
-          <rect x="372" y="586" width="46" height="44" rx="6" fill="#e0662f"/>
-          <path d="M 418 596 q 22 4 0 24" stroke="#e0662f" stroke-width="8" fill="none"/>
-          <rect x="372" y="586" width="46" height="10" rx="4" fill="#c45528"/>
+          <rect x="372" y="586" width="46" height="44" rx="6" fill="#e23a3a"/>
+          <path d="M 418 596 q 22 4 0 24" stroke="#e23a3a" stroke-width="8" fill="none"/>
+          <rect x="372" y="586" width="46" height="10" rx="4" fill="#a82a24"/>
           <g class="steam">
             <rect x="386" y="556" width="5" height="18" rx="2.5"/>
             <rect x="398" y="548" width="5" height="22" rx="2.5"/>
@@ -312,8 +339,8 @@
 
         <!-- floor plant -->
         <g>
-          <rect x="170" y="712" width="70" height="52" rx="8" fill="#c45528"/>
-          <rect x="164" y="702" width="82" height="16" rx="5" fill="#e0662f"/>
+          <rect x="170" y="712" width="70" height="52" rx="8" fill="#2c3a4e"/>
+          <rect x="164" y="702" width="82" height="16" rx="5" fill="#e23a3a"/>
           <path d="M 205 702 Q 180 640 150 620" stroke="#7fbf68" stroke-width="10" fill="none" stroke-linecap="round"/>
           <path d="M 205 702 Q 212 632 250 606" stroke="#7fbf68" stroke-width="10" fill="none" stroke-linecap="round"/>
           <path d="M 205 702 Q 198 648 206 610" stroke="#8fd078" stroke-width="9" fill="none" stroke-linecap="round"/>
@@ -321,8 +348,8 @@
         </g>
 
         <!-- rug -->
-        <ellipse cx="760" cy="806" rx="300" ry="34" fill="#2e2116"/>
-        <ellipse cx="760" cy="806" rx="300" ry="34" fill="none" stroke="#5c4630" stroke-width="3" stroke-dasharray="14 10"/>
+        <ellipse cx="760" cy="806" rx="300" ry="34" fill="#131b27"/>
+        <ellipse cx="760" cy="806" rx="300" ry="34" fill="none" stroke="#33455e" stroke-width="3" stroke-dasharray="14 10"/>
       </svg>
 
       <!-- typed code on left monitor (positioned over the stage) -->
@@ -455,7 +482,7 @@
       <section class="panel" id="panel-timor" role="dialog" aria-modal="true" aria-labelledby="timor-title" hidden>
         <button class="panel-close" aria-label="Close panel">&times;</button>
         <p class="panel-kicker">the view from here</p>
-        <h2 id="timor-title" class="panel-title">Timor-Leste <span class="flag">🇹🇱</span></h2>
+        <h2 id="timor-title" class="panel-title">Timor-Leste <img class="flag" src="flag-timor-leste.svg" alt="" width="30" height="15"></h2>
         <p class="contact-lead">I'm building for <strong>Timor-Leste's digital transformation</strong> — small ideas, real impact, from Dili to the world.</p>
         <ul class="timor-points">
           <li>Web &amp; software that solves real problems for real people</li>
