@@ -224,6 +224,27 @@ body.day .lamp-cone { opacity: 0.35; }
   50%      { opacity: 0.55; }
 }
 
+.robot-arm {
+  transform-box: view-box;
+  transform-origin: 300px 820px;
+  animation: robotSway 7s ease-in-out infinite;
+}
+
+@keyframes robotSway {
+  0%, 100% { transform: rotate(-1deg); }
+  50%      { transform: rotate(1.4deg); }
+}
+
+.hover-bot {
+  transform-box: view-box;
+  animation: botFloat 3.6s ease-in-out infinite;
+}
+
+@keyframes botFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
 .steam rect {
   fill: rgba(207, 240, 255, 0.45);
   animation: steam 2.8s ease-in-out infinite;
