@@ -7,17 +7,19 @@
 ## 📖 Project Overview
 This repository contains the source code for my personal portfolio. Instead of a traditional scrolling page, the whole portfolio lives inside an **interactive SVG room**: every object — the desk, monitors, shelf, window, note board, robotic arm and the holographic AI — is clickable and opens a panel (About, Skills, Projects, ML Lab, Contact, Timor-Leste).
 
-The site showcases my work in **AI & Machine Learning**, **Web Development** and **Software Engineering**, with zero frameworks and zero build steps: pure HTML, CSS, JavaScript and SVG.
+The **Projects** panel lists all 8 of my projects (web, mobile, desktop, data science and this portfolio itself), while the **ML Lab** — opened by clicking the robotic arm — groups my machine-learning stack and ML/AI projects. The site showcases my work in **AI & Machine Learning**, **Web Development** and **Software Engineering**, with zero frameworks and zero build steps: pure HTML, CSS, JavaScript and SVG.
 
 ## 🚀 Key Features
 * **Interactive room scene:** hand-built SVG environment with 10 clickable hotspots that open accessible dialog panels.
-* **E.D.D.I — holographic AI assistant:** a wireframe assistant beside the window that types responses, rotates through lines, and speaks them via the Web Speech API (audio toggle).
+* **E.D.D.I — holographic AI assistant:** a holographic figure standing beside the window that types responses, rotates through lines, and speaks them via the Web Speech API (audio toggle).
+* **Modern robotic manipulator:** a sleek glowing robot arm that opens the **ML Lab** (ML/DL stack + ML/AI projects) when clicked.
+* **Clickable skill references:** every skill chip (HTML, CSS, Python, Django, TensorFlow…) links to its official documentation in a new tab.
 * **Stark-tech HUD:** arc-reactor header, corner brackets, system status readouts, scanlines and a light-sweep overlay.
 * **Rotating motivational quotes:** a HUD banner, a random quote on the loader, and extra lines woven into the AI's dialogue.
 * **Day / Night mode:** toggle persisted with `localStorage('room-mode')`.
 * **Loader:** animated "powering the arc reactor" progress screen that runs while assets load.
 * **Self-hosted variable fonts:** Inter, JetBrains Mono and Pixelify Sans (no external font CDNs).
-* **Fully responsive:** the room scales to a 16:9 stage; on phones a fallback button nav appears and decorative overlays are hidden.
+* **Fully responsive:** the room scales to a 16:9 stage; on phones a fallback button nav appears (with an ML shortcut) and decorative overlays are hidden.
 * **SEO / accessibility:** semantic markup, Open Graph + JSON-LD data, ARIA-labelled dialogs, focus restore, ESC/backdrop close, `prefers-reduced-motion` support and a `noscript` fallback.
 
 ## 🛠️ Tech Stack
@@ -27,8 +29,8 @@ The site showcases my work in **AI & Machine Learning**, **Web Development** and
 * **SVG:** the entire room illustration (gradients, glow filters, clip paths) drawn by hand in `index.html`.
 
 ## 📁 Repository Structure
-* **`index.html`** — markup for the room SVG, hotspots, HUD, panels and mobile nav.
-* **`style.css`** — full design system: tokens, room styling, animations, responsive breakpoints.
+* **`index.html`** — markup for the room SVG (including the robotic arm, hologram and HUD), hotspots, 6 panels and mobile nav.
+* **`style.css`** — full design system: Stark-tech tokens, room styling, animations, responsive breakpoints.
 * **`script.js`** — loader, mode toggle, panels, typewriter, E.D.D.I dialogue/voice, quote rotation.
 * **`fonts/`** — self-hosted variable font files (Inter, JetBrains Mono, Pixelify Sans).
 * **`flag-timor-leste.svg`** — Timor-Leste flag used in the scene and panels.
