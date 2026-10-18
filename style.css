@@ -248,8 +248,8 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 /* AI speech panel */
 .ai-chat {
   position: absolute;
-  left: 62%;
-  top: 63%;
+  left: 1%;
+  top: 47%;
   width: 16%;
   z-index: 3;
   padding: 9px 11px;
