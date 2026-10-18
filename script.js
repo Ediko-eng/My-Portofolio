@@ -152,7 +152,9 @@
     'Seven projects loaded. Deep learning module ready.',
     'Shall I open the portfolio for you?',
     'Arc reactor at 98 percent. Coffee levels: low.',
-    'Timor-Leste uplink stable. Ready when you are.'
+    'Timor-Leste uplink stable. Ready when you are.',
+    'Remember, sir: progress, not perfection.',
+    'Small steps from Dili can still reach the world.'
   ];
 
   var aiIndex = 0;
@@ -200,5 +202,40 @@
       if (!aiVoiceOn && canSpeak) window.speechSynthesis.cancel();
       if (aiVoiceOn) speak(aiLines[(aiIndex - 1 + aiLines.length) % aiLines.length]);
     });
+  }
+
+  /* ---------- Motivational quotes ---------- */
+  var quotes = [
+    'Build things that outlive the doubt.',
+    'Every line of code is a brick in the future.',
+    'Dream big, start small, ship today.',
+    'Discipline beats motivation when motivation sleeps.',
+    'Small steps from Dili can reach the world.',
+    'Learn like the island never stops growing.',
+    'The best time to build is now.',
+    "You don't have to be great to start, but you have to start to be great."
+  ];
+
+  var loaderQuote = document.getElementById('loaderQuote');
+  if (loaderQuote) {
+    loaderQuote.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+  }
+
+  var quoteEl = document.getElementById('quote');
+  if (quoteEl) {
+    var qi = 0;
+    function showQuote(text) {
+      quoteEl.classList.remove('show');
+      setTimeout(function () {
+        quoteEl.textContent = text;
+        quoteEl.classList.add('show');
+      }, 600);
+    }
+    showQuote(quotes[0]);
+    qi = 1;
+    setInterval(function () {
+      showQuote(quotes[qi % quotes.length]);
+      qi++;
+    }, 8000);
   }
 })();

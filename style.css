@@ -309,6 +309,40 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   box-shadow: 0 0 12px rgba(63, 212, 255, 0.25);
 }
 
+/* rotating motivational quote */
+.quote {
+  position: absolute;
+  left: 50%;
+  top: 5.2%;
+  transform: translate(-50%, -4px);
+  z-index: 4;
+  max-width: 62%;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: clamp(9px, 0.82vw, 13px);
+  letter-spacing: 0.16em;
+  color: rgba(143, 232, 255, 0.6);
+  text-shadow: 0 0 10px rgba(63, 212, 255, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+}
+
+.quote.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.loader-quote {
+  margin-top: 22px;
+  max-width: min(420px, 82vw);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  color: rgba(143, 232, 255, 0.6);
+}
+
 .data-stream rect {
   transform-box: view-box;
   animation: dataDrop 3.4s linear infinite;
