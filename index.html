@@ -556,8 +556,9 @@
       <button class="hotspot hotspot-note" data-panel="projects" style="left:56.5%;top:27%;width:5.6%;height:7.2%" aria-label="Notice: projects"></button>
       <button class="hotspot hotspot-note" data-panel="contact" style="left:63.3%;top:26.8%;width:5.6%;height:7.2%" aria-label="Notice: contact"></button>
       <button class="hotspot" data-panel="contact" style="left:22.7%;top:63.5%;width:4.6%;height:7.6%" aria-label="Coffee mug: contact"></button>
+      <button class="hotspot" data-panel="robot" style="left:16.25%;top:59%;width:6.2%;height:34%" aria-label="Robotic arm: ML lab"></button>
 
-      <span class="hint" id="hint">Click the room &mdash; the desk, shelf, window or notes open my portfolio</span>
+      <span class="hint" id="hint">Click the room &mdash; the desk, shelf, window, robot or notes open my portfolio</span>
     </div>
 
     <!-- PANELS -->
@@ -605,6 +606,39 @@
             <h3>ML / DL</h3>
             <div class="chips"><span>TensorFlow</span><span>PyTorch</span><span>scikit-learn</span><span>NLP</span></div>
           </div>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-robot" role="dialog" aria-modal="true" aria-labelledby="robot-title" hidden>
+        <button class="panel-close" aria-label="Close panel">&times;</button>
+        <p class="panel-kicker">the manipulator&rsquo;s log</p>
+        <h2 id="robot-title" class="panel-title">ML Lab</h2>
+        <p>My robotic arm runs the machine-learning side of the lab &mdash; the models I train and the data I work with.</p>
+        <div class="skill-groups">
+          <div class="skill-group">
+            <h3>ML / DL stack</h3>
+            <div class="chips"><span>Python</span><span>scikit-learn</span><span>TensorFlow</span><span>PyTorch</span><span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>NLP</span></div>
+          </div>
+        </div>
+        <div class="project-list">
+          <article class="project">
+            <h3>Sign Language Classification</h3>
+            <p>Machine learning model using K-Nearest Neighbors to classify hand signs for sign language recognition.</p>
+            <div class="chips"><span>Python</span><span>scikit-learn</span><span>KNN</span></div>
+            <a class="project-link" href="https://github.com/Ediko-eng/SIGNLANGUAGE-CLASSIFICATION.git" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+          </article>
+          <article class="project">
+            <h3>HIV/AIDS Data Analysis</h3>
+            <p>Analysis of HIV/AIDS quantitative indicators in Timor-Leste, segmented by sex &mdash; using Python and data-science libraries.</p>
+            <div class="chips"><span>Python</span><span>Pandas</span><span>Data Science</span></div>
+            <a class="project-link" href="https://github.com/Ediko-eng/Data-Scince.git" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+          </article>
+          <article class="project">
+            <h3>Tetum Morphology Detection</h3>
+            <p>NLP tool that detects and analyses Tetum language morphology &mdash; my research at UNTL.</p>
+            <div class="chips"><span>Python</span><span>NLP</span></div>
+            <a class="project-link" href="https://github.com/Ediko-eng/Edmilson-Fabio-Valente.git" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+          </article>
         </div>
       </section>
 
@@ -688,6 +722,7 @@
       <button data-panel="about">About</button>
       <button data-panel="skills">Skills</button>
       <button data-panel="projects">Projects</button>
+      <button data-panel="robot">ML</button>
       <button data-panel="contact">Contact</button>
     </nav>
   </main>
