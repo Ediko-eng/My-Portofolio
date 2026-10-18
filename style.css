@@ -229,6 +229,86 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   50%      { transform: translateY(-6px); opacity: 1; }
 }
 
+.ai-bust {
+  transform-box: view-box;
+  animation: aiFloat 5.2s ease-in-out infinite;
+}
+
+@keyframes aiFloat {
+  0%, 100% { transform: translateY(0); opacity: 0.9; }
+  50%      { transform: translateY(-9px); opacity: 1; }
+}
+
+.ai-rings {
+  transform-box: view-box;
+  transform-origin: 1330px 832px;
+  animation: holoSpin 9s linear infinite;
+}
+
+/* AI speech panel */
+.ai-chat {
+  position: absolute;
+  left: 62%;
+  top: 63%;
+  width: 16%;
+  z-index: 3;
+  padding: 9px 11px;
+  border-radius: 9px;
+  border: 1px solid rgba(63, 212, 255, 0.35);
+  background: rgba(6, 12, 18, 0.72);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  box-shadow: 0 0 18px rgba(63, 212, 255, 0.15);
+  pointer-events: none;
+}
+
+.ai-name {
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 0.72vw, 11px);
+  letter-spacing: 0.16em;
+  color: rgba(143, 232, 255, 0.9);
+  margin-bottom: 4px;
+}
+
+.ai-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 8px rgba(63, 212, 255, 0.9);
+  animation: blink 1.4s steps(2, start) infinite;
+}
+
+.ai-line {
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 0.76vw, 11.5px);
+  line-height: 1.6;
+  color: #cfeaf7;
+  min-height: 2.6em;
+  text-shadow: 0 0 7px rgba(63, 212, 255, 0.4);
+}
+
+.ai-audio {
+  margin-top: 6px;
+  pointer-events: auto;
+  font-family: var(--font-mono);
+  font-size: clamp(7px, 0.62vw, 9.5px);
+  letter-spacing: 0.14em;
+  color: rgba(143, 232, 255, 0.85);
+  border: 1px solid rgba(63, 212, 255, 0.3);
+  border-radius: 5px;
+  padding: 3px 7px;
+  transition: color var(--t) var(--ease), border-color var(--t) var(--ease);
+}
+
+.ai-audio:hover,
+.ai-audio[aria-pressed="true"] {
+  color: var(--amber);
+  border-color: rgba(63, 212, 255, 0.7);
+  box-shadow: 0 0 12px rgba(63, 212, 255, 0.25);
+}
+
 .data-stream rect {
   transform-box: view-box;
   animation: dataDrop 3.4s linear infinite;
@@ -854,6 +934,7 @@ body.day .mode-toggle .icon-moon { display: none; }
   .hint { display: none; }
   .mini-footer { display: none; }
   .mobile-nav { display: flex; }
+  .ai-chat { display: none; }
 
   .panel {
     left: 0;

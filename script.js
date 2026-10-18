@@ -135,4 +135,70 @@
   /* ---------- Year ---------- */
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---------- E.D.D.I, the room AI ---------- */
+  var aiLine = document.getElementById('aiLine');
+  var aiBtn = document.getElementById('aiAudio');
+  var aiVoiceOn = false;
+  var canSpeak = 'speechSynthesis' in window;
+
+  if (aiBtn && !canSpeak) {
+    aiBtn.hidden = true;
+  }
+
+  var aiLines = [
+    'Good evening. All systems online.',
+    "Welcome to Edmilson's lab, sir.",
+    'Seven projects loaded. Deep learning module ready.',
+    'Shall I open the portfolio for you?',
+    'Arc reactor at 98 percent. Coffee levels: low.',
+    'Timor-Leste uplink stable. Ready when you are.'
+  ];
+
+  var aiIndex = 0;
+
+  function speak(text) {
+    if (!aiVoiceOn || !canSpeak) return;
+    var u = new SpeechSynthesisUtterance(text);
+    u.rate = 1.02;
+    u.pitch = 0.85;
+    u.volume = 0.9;
+    var voice = window.speechSynthesis.getVoices().filter(function (v) {
+      return /en-(GB|US)/i.test(v.lang);
+    })[0];
+    if (voice) u.voice = voice;
+    window.speechSynthesis.speak(u);
+  }
+
+  function typeAiLine() {
+    var text = aiLines[aiIndex % aiLines.length];
+    aiIndex++;
+    var i = 0;
+    speak(text);
+    var timer = setInterval(function () {
+      i++;
+      aiLine.textContent = text.slice(0, i);
+      if (i >= text.length) {
+        clearInterval(timer);
+        setTimeout(function () {
+          aiLine.textContent = '';
+          setTimeout(typeAiLine, 900);
+        }, 3200);
+      }
+    }, 32);
+  }
+
+  if (aiLine) {
+    setTimeout(typeAiLine, 2600);
+  }
+
+  if (aiBtn) {
+    aiBtn.addEventListener('click', function () {
+      aiVoiceOn = !aiVoiceOn;
+      aiBtn.setAttribute('aria-pressed', String(aiVoiceOn));
+      aiBtn.textContent = aiVoiceOn ? 'AUDIO ON' : 'AUDIO OFF';
+      if (!aiVoiceOn && canSpeak) window.speechSynthesis.cancel();
+      if (aiVoiceOn) speak(aiLines[(aiIndex - 1 + aiLines.length) % aiLines.length]);
+    });
+  }
 })();

@@ -498,6 +498,31 @@
         <ellipse cx="760" cy="806" rx="300" ry="34" fill="none" stroke="#3fd4ff" stroke-opacity="0.5" stroke-width="2"/>
         <ellipse cx="760" cy="806" rx="238" ry="26" fill="none" stroke="#3fd4ff" stroke-opacity="0.28" stroke-width="1.5" stroke-dasharray="10 12"/>
         <ellipse cx="760" cy="806" rx="300" ry="34" fill="none" stroke="#3fd4ff" stroke-opacity="0.22" stroke-width="6" filter="url(#glow)"/>
+
+        <!-- AI assistant hologram: projector -->
+        <ellipse cx="1330" cy="832" rx="64" ry="16" fill="#0e1520" stroke="#3fd4ff" stroke-opacity="0.45" stroke-width="2"/>
+        <ellipse cx="1330" cy="832" rx="64" ry="16" fill="none" stroke="#3fd4ff" stroke-opacity="0.2" stroke-width="6" filter="url(#glow)"/>
+        <g class="ai-rings" transform="translate(1330 832)">
+          <ellipse rx="46" ry="11" fill="none" stroke="#8fe8ff" stroke-opacity="0.6" stroke-width="1.5" stroke-dasharray="7 9"/>
+        </g>
+        <polygon points="1302,826 1358,826 1350,706 1310,706" fill="#3fd4ff" opacity="0.06"/>
+
+        <!-- AI assistant hologram: human bust -->
+        <g class="ai-bust">
+          <circle cx="1330" cy="660" r="26" fill="none" stroke="#8fe8ff" stroke-opacity="0.9" stroke-width="2" filter="url(#glow)"/>
+          <line x1="1308" y1="650" x2="1352" y2="650" stroke="#8fe8ff" stroke-opacity="0.5" stroke-width="1"/>
+          <line x1="1306" y1="662" x2="1354" y2="662" stroke="#8fe8ff" stroke-opacity="0.35" stroke-width="1"/>
+          <line x1="1310" y1="674" x2="1350" y2="674" stroke="#8fe8ff" stroke-opacity="0.5" stroke-width="1"/>
+          <circle cx="1322" cy="658" r="2.5" fill="#eaffff"/>
+          <circle cx="1338" cy="658" r="2.5" fill="#eaffff"/>
+          <rect x="1322" y="682" width="16" height="14" fill="#3fd4ff" opacity="0.12"/>
+          <path d="M 1262 780 Q 1330 704 1398 780 Z" fill="#3fd4ff" opacity="0.08" stroke="#3fd4ff" stroke-opacity="0.7" stroke-width="2"/>
+          <line x1="1292" y1="726" x2="1368" y2="726" stroke="#8fe8ff" stroke-opacity="0.4" stroke-width="1"/>
+          <line x1="1274" y1="748" x2="1386" y2="748" stroke="#8fe8ff" stroke-opacity="0.3" stroke-width="1"/>
+          <line x1="1264" y1="768" x2="1396" y2="768" stroke="#8fe8ff" stroke-opacity="0.4" stroke-width="1"/>
+          <circle cx="1330" cy="742" r="3" fill="#3fd4ff" filter="url(#glow)"/>
+          <text x="1330" y="810" class="unit-label" text-anchor="middle">E.D.D.I</text>
+        </g>
       </svg>
 
       <!-- typed code on left monitor (positioned over the stage) -->
@@ -510,6 +535,12 @@
         <span class="hud-bracket br"></span>
         <span class="hud-status hud-left">STARK.OS v12.4 &middot; SYS.ONLINE</span>
         <span class="hud-status hud-right">ARC 98% &middot; 8.5569&deg;S 125.5603&deg;E</span>
+      </div>
+
+      <div class="ai-chat" aria-live="polite">
+        <p class="ai-name">E.D.D.I <span class="ai-dot"></span></p>
+        <p class="ai-line" id="aiLine"></p>
+        <button class="ai-audio" id="aiAudio" type="button" aria-pressed="false">AUDIO OFF</button>
       </div>
 
       <!-- HOTSPOTS -->
