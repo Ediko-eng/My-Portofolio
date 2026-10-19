@@ -135,6 +135,16 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   justify-content: center;
 }
 
+/* mobile hero: sr-only on desktop (keeps the page's only h1 for SEO/a11y) */
+.mobile-hero {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .room-stage {
   position: relative;
   width: min(100vw, 177.78vh);
@@ -986,6 +996,91 @@ body.day .mode-toggle .icon-moon { display: none; }
   .mobile-nav { display: flex; }
   .ai-chat { display: none; }
 
+  /* hero fills the empty space above the room strip */
+  .room {
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 64px;
+  }
+
+  .mobile-hero {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+    text-align: center;
+    padding: 0 22px;
+    max-width: 640px;
+  }
+
+  .mh-kicker {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.28em;
+    color: var(--amber);
+    text-shadow: 0 0 10px rgba(63, 212, 255, 0.45);
+    margin-bottom: 8px;
+  }
+
+  .mobile-hero h1 {
+    font-family: var(--font-pixel);
+    font-size: clamp(24px, 7vw, 34px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--paper);
+    text-shadow: 0 0 18px rgba(63, 212, 255, 0.25);
+    margin-bottom: 8px;
+  }
+
+  .mh-role {
+    font-size: 13.5px;
+    color: var(--sand);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .mh-sub {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: rgba(143, 232, 255, 0.75);
+    border: 1px solid rgba(63, 212, 255, 0.3);
+    background: rgba(16, 21, 28, 0.6);
+    border-radius: 999px;
+    padding: 6px 13px;
+  }
+
+  /* bigger, finger-friendly hit areas (visuals unchanged) */
+  .hotspot { touch-action: manipulation; }
+  .hotspot::before {
+    content: '';
+    position: absolute;
+    inset: -14px;
+  }
+  .hotspot-robot::before { inset: -14px 0 -14px -14px; }
+  .hotspot-mug::before { inset: -14px -14px -14px 0; }
+
+  /* comfortable touch targets */
+  .mobile-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 94vw;
+    gap: 8px;
+    bottom: 12px;
+  }
+
+  .mobile-nav button {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    padding: 10px 16px;
+    touch-action: manipulation;
+  }
+
   .panel {
     left: 0;
     right: 0;
@@ -1011,6 +1106,12 @@ body.day .mode-toggle .icon-moon { display: none; }
   .panel-photo { width: 110px; height: 110px; }
   .contact-links { grid-template-columns: 1fr; }
   .facts > div { grid-template-columns: 92px 1fr; }
+}
+
+/* short landscape phones: room fills the screen, no room for the hero text */
+@media (max-width: 760px) and (max-height: 500px) {
+  .mobile-hero { display: none; }
+  .room { gap: 0; padding-bottom: 56px; }
 }
 
 /* ============ REDUCED MOTION ============ */
