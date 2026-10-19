@@ -238,4 +238,75 @@
       qi++;
     }, 8000);
   }
+
+  /* ---------- Portrait mobile: pan the room left/right ---------- */
+  var pan = document.getElementById('panViewport');
+  if (pan) {
+    function panScrollable() {
+      return pan.scrollWidth - pan.clientWidth > 4;
+    }
+
+    function centerPan() {
+      if (panScrollable()) {
+        pan.scrollLeft = (pan.scrollWidth - pan.clientWidth) / 2;
+      }
+    }
+
+    centerPan();
+    window.addEventListener('load', centerPan);
+    window.addEventListener('resize', centerPan);
+    window.addEventListener('orientationchange', function () {
+      setTimeout(centerPan, 120);
+    });
+
+    /* vertical wheel / trackpad -> horizontal pan when the room is wider than the screen */
+    pan.addEventListener('wheel', function (e) {
+      if (!panScrollable()) return;
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      pan.scrollLeft += e.deltaY;
+      e.preventDefault();
+    }, { passive: false });
+
+    /* mouse drag-to-pan (touch pans natively) */
+    var downX = 0;
+    var downScroll = 0;
+    var panning = false;
+    var dragged = false;
+    var clickScroll = 0;
+
+    pan.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'touch' || !panScrollable()) return;
+      panning = true;
+      dragged = false;
+      downX = e.clientX;
+      downScroll = pan.scrollLeft;
+    });
+
+    pan.addEventListener('pointermove', function (e) {
+      if (!panning) return;
+      var dx = e.clientX - downX;
+      if (Math.abs(dx) > 6) dragged = true;
+      if (dragged) {
+        pan.scrollLeft = downScroll - dx;
+        e.preventDefault();
+      }
+    });
+
+    function endPan() { panning = false; }
+    pan.addEventListener('pointerup', endPan);
+    pan.addEventListener('pointercancel', endPan);
+
+    /* suppress the click that follows a drag / touch-scroll so hotspots don't misfire */
+    pan.addEventListener('pointerdown', function (e) {
+      clickScroll = pan.scrollLeft;
+    }, true);
+
+    pan.addEventListener('click', function (e) {
+      if (dragged || Math.abs(pan.scrollLeft - clickScroll) > 8) {
+        e.preventDefault();
+        e.stopPropagation();
+        dragged = false;
+      }
+    }, true);
+  }
 })();
