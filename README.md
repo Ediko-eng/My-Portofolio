@@ -19,7 +19,10 @@ The **Projects** panel lists all 8 of my projects (web, mobile, desktop, data sc
 * **Day / Night mode:** toggle persisted with `localStorage('room-mode')`.
 * **Loader:** animated "powering the arc reactor" progress screen that runs while assets load.
 * **Self-hosted variable fonts:** Inter, JetBrains Mono and Pixelify Sans (no external font CDNs).
-* **Fully responsive:** the room scales to a 16:9 stage; on phones a fallback button nav appears (with an ML shortcut) and decorative overlays are hidden.
+* **Portrait mobile experience:** a mobile hero intro (name, role, swipe prompt) plus a full-height room that is **wider than the screen — drag left/right to pan** across it (auto-centered, edge fades, mouse-drag and wheel support on desktop, click-suppression so drags never misfire a hotspot).
+* **Bottom tab bar on phones:** a floating glass navigation bar (About · Skills · Projects · ML · Contact) with line icons, labels, safe-area padding and a glowing active state that tracks the open panel.
+* **Finger-friendly targets:** every hotspot gets an invisible enlarged hit area on mobile (44px+ nav targets, `touch-action: manipulation`).
+* **Fully responsive:** the room scales to a 16:9 stage on desktop/landscape; portrait phones get the pannable layout above and decorative overlays (hint, speech box, footer) are hidden.
 * **SEO / accessibility:** semantic markup, Open Graph + JSON-LD data, ARIA-labelled dialogs, focus restore, ESC/backdrop close, `prefers-reduced-motion` support and a `noscript` fallback.
 
 ## 🛠️ Tech Stack
@@ -29,9 +32,9 @@ The **Projects** panel lists all 8 of my projects (web, mobile, desktop, data sc
 * **SVG:** the entire room illustration (gradients, glow filters, clip paths) drawn by hand in `index.html`.
 
 ## 📁 Repository Structure
-* **`index.html`** — markup for the room SVG (including the robotic arm, hologram and HUD), hotspots, 6 panels and mobile nav.
-* **`style.css`** — full design system: Stark-tech tokens, room styling, animations, responsive breakpoints.
-* **`script.js`** — loader, mode toggle, panels, typewriter, E.D.D.I dialogue/voice, quote rotation.
+* **`index.html`** — markup for the room SVG (including the robotic arm, hologram and HUD), hotspots, 6 panels and the mobile tab bar.
+* **`style.css`** — full design system: Stark-tech tokens, room styling, animations, responsive breakpoints (including the portrait pannable-room layout).
+* **`script.js`** — loader, mode toggle, panels, portrait room panning, tab-bar active state, typewriter, E.D.D.I dialogue/voice, quote rotation.
 * **`fonts/`** — self-hosted variable font files (Inter, JetBrains Mono, Pixelify Sans).
 * **`flag-timor-leste.svg`** — Timor-Leste flag used in the scene and panels.
 * **`favicon.svg` / `og-image.png` / `Image.png`** — branding assets.
