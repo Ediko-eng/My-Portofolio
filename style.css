@@ -974,23 +974,67 @@ body.day .mode-toggle .icon-moon { display: none; }
   display: none;
   position: fixed;
   left: 50%;
-  bottom: 14px;
+  bottom: max(12px, env(safe-area-inset-bottom));
   transform: translateX(-50%);
   z-index: 15;
-  gap: 7px;
+  width: min(94vw, 430px);
+  justify-content: space-between;
+  gap: 2px;
+  padding: 6px;
+  background: rgba(12, 17, 25, 0.92);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(174, 191, 208, 0.25);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(63, 212, 255, 0.06);
 }
 
 .mobile-nav button {
-  font-size: 12.5px;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: 52px;
+  padding: 6px 2px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
   font-weight: 600;
-  color: var(--paper);
-  background: rgba(25, 33, 43, 0.92);
-  border: 1px solid rgba(174, 191, 208, 0.3);
-  border-radius: 999px;
-  padding: 8px 14px;
+  letter-spacing: 0.04em;
+  color: var(--sand);
+  background: transparent;
+  border: none;
+  border-radius: 14px;
+  touch-action: manipulation;
+  transition: color var(--t) var(--ease), background var(--t) var(--ease);
 }
 
-.mobile-nav button:hover { border-color: var(--amber); color: var(--amber); }
+.mobile-nav button svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mobile-nav button:hover {
+  color: var(--amber);
+  background: rgba(63, 212, 255, 0.08);
+}
+
+.mobile-nav button:active { transform: translateY(1px); }
+
+.mobile-nav button.is-active {
+  color: var(--amber);
+  background: rgba(63, 212, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(63, 212, 255, 0.4);
+  text-shadow: 0 0 10px rgba(63, 212, 255, 0.45);
+}
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 760px) {
@@ -1065,24 +1109,6 @@ body.day .mode-toggle .icon-moon { display: none; }
   }
   .hotspot-robot::before { inset: -14px 0 -14px -14px; }
   .hotspot-mug::before { inset: -14px -14px -14px 0; }
-
-  /* comfortable touch targets */
-  .mobile-nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 94vw;
-    gap: 8px;
-    bottom: 12px;
-  }
-
-  .mobile-nav button {
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    font-size: 13px;
-    padding: 10px 16px;
-    touch-action: manipulation;
-  }
 
   .panel {
     left: 0;

@@ -50,6 +50,7 @@
     var closeBtn = panel.querySelector('.panel-close');
     if (closeBtn) closeBtn.focus();
     hint && hint.classList.add('gone');
+    setNavActive(name);
   }
 
   function hide() {
@@ -58,6 +59,13 @@
     openPanel = null;
     backdrop.classList.remove('open');
     if (lastFocus && lastFocus.focus) lastFocus.focus();
+    setNavActive('');
+  }
+
+  function setNavActive(name) {
+    document.querySelectorAll('.mobile-nav button[data-panel]').forEach(function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-panel') === name);
+    });
   }
 
   document.querySelectorAll('.hotspot[data-panel]').forEach(function (btn) {
